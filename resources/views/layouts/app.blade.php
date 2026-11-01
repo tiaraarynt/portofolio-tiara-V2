@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ $portfolio['personal']['full_name'] }} — {{ $portfolio['personal']['role'] }}. {{ $portfolio['personal']['short_bio'] }}">
     <meta name="keywords" content="portfolio, tiara ariyanto putri, software engineer, ui ux designer, ipb university, web developer">
-    <meta property="og:title" content="{{ $portfolio['personal']['full_name'] }} — {{ $portfolio['personal']['role'] }}">
+    <meta property="og:title" content="Tiara Ariyanto Putri — Software Engineer">
     <meta property="og:description" content="{{ $portfolio['personal']['short_bio'] }}">
     <meta property="og:type" content="website">
 
-    <title>{{ $portfolio['personal']['full_name'] }} — {{ $portfolio['personal']['role'] }}</title>
+    <title>Tiara Ariyanto Putri — Software Engineer</title>
 
     <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
