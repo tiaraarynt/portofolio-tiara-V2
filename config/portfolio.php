@@ -4,7 +4,7 @@ return [
     'personal' => [
         'name' => 'Tiara',
         'full_name' => 'Tiara Ariyanto Putri',
-        'role' => 'Software Engineer & UI/UX Designer',
+        'role' => 'Software Engineer',
         'sub_role' => 'Sarjana Terapan Rekayasa Perangkat Lunak (IPB) • BNSP Certified Software Engineer',
         'location' => 'Bogor & Depok, Indonesia',
         'availability' => 'Open for Full-time Roles, Internships & Freelance',
@@ -193,6 +193,7 @@ return [
             'location' => 'Bogor',
             'type' => 'Part-time',
             'description' => 'Assisted the course lecturer in delivering lectures and multimedia laboratory sessions.',
+            'skills' => ['Teaching', 'Multimedia', 'Course Delivery', 'Academic Mentoring'],
             'points' => [
                 'Prepared lab materials and supported multimedia classroom sessions.',
                 'Guided students through practical coursework and project assignments.',
@@ -206,6 +207,7 @@ return [
             'location' => 'Depok',
             'type' => 'Internship',
             'description' => 'Developed an Education and Training module for the Depok City Government internal portal to support training planning.',
+            'skills' => ['Laravel', 'PHP', 'Figma', 'Black Box Testing', 'Usability Testing'],
             'points' => [
                 'Developed an Education and Training module for the Depok City Government portal to support employee training plans.',
                 'Analyzed system requirements, mapped workflows, and created low-fidelity Figma prototypes.',
@@ -219,6 +221,7 @@ return [
             'location' => 'Depok',
             'type' => 'Internship',
             'description' => 'Built the Job Competency Standards feature on the internal portal to manage employee competency data.',
+            'skills' => ['Web Development', 'System Analysis', 'Functional Testing', 'Government Portal'],
             'points' => [
                 'Built the Job Competency Standards feature to manage civil servant competency data.',
                 'Gathered user requirements and designed features aligned with internal government processes.',
@@ -230,8 +233,9 @@ return [
             'role' => 'Production Operator',
             'company' => 'PT. Sansyu Precision Indonesia',
             'location' => 'Cikarang',
-            'type' => 'Full-time',
+            'type' => 'Internship',
             'description' => 'Managed precision packaging, verified product labels, and performed quality inspections prior to dispatch.',
+            'skills' => ['Quality Inspection', 'Precision Packaging', 'Standard Operating Procedures'],
             'points' => [
                 'Packed products according to company standards.',
                 'Checked product labels to ensure accurate information.',
@@ -242,11 +246,11 @@ return [
 
     'education' => [
         [
-            'period' => 'Aug 2022 — Aug 2026',
-            'degree' => 'Bachelor of Applied Science in Software Engineering Technology',
+            'period' => 'Aug 2022 – Aug 2026',
+            'degree' => 'Bachelor of Applied Software Engineering Technology',
             'institution' => 'IPB University',
             'location' => 'Bogor, Indonesia',
-            'badge' => 'GPA 3.50 / 4.00',
+            'badge' => 'Aug 2022 – Aug 2026',
             'description' => '',
         ],
     ],

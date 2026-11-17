@@ -51,11 +51,11 @@ function initProjectCarousel() {
         const realIdx = ((centerIdx - CLONE_COUNT) % total + total) % total;
         dots.forEach((dot, i) => {
             const isActive = i === realIdx;
-            dot.classList.toggle('bg-[#F2D887]', isActive);
+            dot.classList.toggle('bg-[#233B53]', isActive);
             dot.classList.toggle('ring-1', isActive);
-            dot.classList.toggle('ring-[#1F3D2B]/20', isActive);
+            dot.classList.toggle('ring-[#233B53]/20', isActive);
             dot.classList.toggle('w-7', isActive);
-            dot.classList.toggle('bg-[#B9C8E8]/70', !isActive);
+            dot.classList.toggle('bg-[#C4D7E8]', !isActive);
             dot.classList.toggle('w-2', !isActive);
         });
     }
@@ -293,11 +293,11 @@ function showToast(message, type = 'success') {
     const toast = document.createElement('div');
     toast.className = `flex items-center gap-3 px-4 py-3 rounded-2xl shadow-xl transition-all duration-300 transform translate-y-4 opacity-0 text-sm font-medium border backdrop-blur-md ${
         type === 'success' 
-            ? 'bg-stone-900/90 text-stone-100 border-[#F2D887]/50' 
+            ? 'bg-stone-900/90 text-stone-100 border-[#233B53]/50' 
             : 'bg-rose-900/90 text-rose-100 border-rose-700/50'
     }`;
     toast.innerHTML = `
-        <span class="inline-block w-2 h-2 rounded-full bg-[#F2D887] animate-pulse"></span>
+        <span class="inline-block w-2 h-2 rounded-full bg-[#233B53] animate-pulse"></span>
         <span>${message}</span>
     `;
 
@@ -379,43 +379,32 @@ function initMobileMenu() {
     });
 }
 
-// Sticky Navbar scroll effects (slight scale down, padding adjustment, subtle shadow, and backdrop blur)
+// Sticky Navbar scroll effects (slight padding adjustment, subtle shadow, and backdrop blur)
 function initStickyNavbar() {
     const navbarHeader = document.getElementById('navbar-header');
     const navbarPill = document.getElementById('navbar-pill');
-    const navItems = document.querySelectorAll('.nav-pill-item');
 
     if (!navbarHeader || !navbarPill) return;
 
     let isScrolled = false;
 
     const handleScroll = () => {
-        const scrolled = window.scrollY > 24;
+        const scrolled = window.scrollY > 20;
         if (scrolled === isScrolled) return;
         isScrolled = scrolled;
 
         if (isScrolled) {
-            navbarHeader.classList.remove('pt-4', 'sm:pt-6');
-            navbarHeader.classList.add('pt-2.5', 'sm:pt-3');
+            navbarHeader.classList.remove('pt-3', 'sm:pt-4');
+            navbarHeader.classList.add('pt-2');
 
-            navbarPill.classList.remove('px-3', 'sm:px-6', 'py-2', 'sm:py-2.5', 'shadow-sm', 'bg-white/90', 'backdrop-blur-md');
-            navbarPill.classList.add('px-2.5', 'sm:px-5', 'py-1.5', 'sm:py-2', 'shadow-md', 'shadow-[#B9C8E8]/25', 'bg-white/80', 'backdrop-blur-xl', 'scale-[0.98]');
-
-            navItems.forEach(item => {
-                item.classList.remove('py-1.5');
-                item.classList.add('py-1');
-            });
+            navbarPill.classList.remove('py-2.5', 'sm:py-3', 'shadow-xs');
+            navbarPill.classList.add('py-2', 'sm:py-2.5', 'shadow-md', 'shadow-stone-900/5', 'bg-white/95');
         } else {
-            navbarHeader.classList.remove('pt-2.5', 'sm:pt-3');
-            navbarHeader.classList.add('pt-4', 'sm:pt-6');
+            navbarHeader.classList.remove('pt-2');
+            navbarHeader.classList.add('pt-3', 'sm:pt-4');
 
-            navbarPill.classList.remove('px-2.5', 'sm:px-5', 'py-1.5', 'sm:py-2', 'shadow-md', 'shadow-[#B9C8E8]/25', 'bg-white/80', 'backdrop-blur-xl', 'scale-[0.98]');
-            navbarPill.classList.add('px-3', 'sm:px-6', 'py-2', 'sm:py-2.5', 'shadow-sm', 'bg-white/90', 'backdrop-blur-md');
-
-            navItems.forEach(item => {
-                item.classList.remove('py-1');
-                item.classList.add('py-1.5');
-            });
+            navbarPill.classList.remove('py-2', 'sm:py-2.5', 'shadow-md', 'shadow-stone-900/5', 'bg-white/95');
+            navbarPill.classList.add('py-2.5', 'sm:py-3', 'shadow-xs');
         }
     };
 
@@ -514,6 +503,98 @@ window.scrollCarousel = function(containerId, offset) {
     }
 };
 
+// Smooth Scroll Reveal & Staggered Animations using IntersectionObserver
+function initScrollReveal() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('.reveal-section, .reveal-item').forEach(el => {
+            el.classList.add('is-revealed');
+        });
+        return;
+    }
+
+    const sections = document.querySelectorAll('main > div > section');
+    sections.forEach((section, idx) => {
+        section.classList.add('reveal-section');
+        // Initial hero visible immediately to prevent layout shift or perceived lag
+        if (idx === 0) {
+            section.classList.add('is-revealed');
+        }
+    });
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-revealed');
+                
+                // Animate child cards with a refined stagger effect
+                const cards = entry.target.querySelectorAll('.clean-card, .project-card-item');
+                cards.forEach((card, index) => {
+                    card.style.transitionDelay = `${index * 60}ms`;
+                    card.classList.add('is-revealed');
+                });
+
+                obs.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px'
+    });
+
+    sections.forEach((section, idx) => {
+        if (idx > 0) {
+            observer.observe(section);
+        }
+    });
+}
+
+// Active Navbar Link Highlighting based on Scroll Position (ScrollSpy)
+function initActiveNavbarSpy() {
+    const navLinks = document.querySelectorAll('#navbar-links .nav-pill-item');
+    const mobileLinks = document.querySelectorAll('#mobile-menu .mobile-nav-link');
+    const sections = document.querySelectorAll('section[id]');
+
+    if (!navLinks.length || !sections.length) return;
+
+    let currentActiveId = '';
+
+    const updateActiveNav = () => {
+        const scrollPosition = window.scrollY + 140; // Offset below sticky header
+
+        let activeSectionId = '';
+        sections.forEach(sec => {
+            const top = sec.offsetTop;
+            const height = sec.offsetHeight;
+            if (scrollPosition >= top && scrollPosition < top + height) {
+                activeSectionId = sec.getAttribute('id');
+            }
+        });
+
+        // Fallback for top of page
+        if (!activeSectionId && window.scrollY < 200) {
+            activeSectionId = 'hero';
+        }
+
+        if (activeSectionId === currentActiveId) return;
+        currentActiveId = activeSectionId;
+
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href') || '';
+            const isMatch = href === `#${activeSectionId}`;
+            link.classList.toggle('is-active-nav', isMatch);
+        });
+
+        mobileLinks.forEach(link => {
+            const href = link.getAttribute('href') || '';
+            const isMatch = href === `#${activeSectionId}`;
+            link.classList.toggle('is-active-nav', isMatch);
+        });
+    };
+
+    window.addEventListener('scroll', updateActiveNav, { passive: true });
+    updateActiveNav();
+}
+
 // Initialize on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
     initStickyNavbar();
@@ -523,6 +604,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initDragToScroll();
     initProjectCarousel();
     initParallaxGradients();
+    initScrollReveal();
+    initActiveNavbarSpy();
 
     // Close certificate modal on backdrop click or Escape key
     const modal = document.getElementById('cert-modal');

@@ -6,18 +6,30 @@
 
 @theme {
     --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-serif: 'Playfair Display', Georgia, Cambria, 'Times New Roman', serif;
     --font-mono: 'JetBrains Mono', monospace;
 
-    /* Palette: Butter Yellow (#F2D887), Warm Cream (#FFF9E9), Powder Blue (#B9C8E8) & High-contrast Text */
-    --color-butter: #F2D887;          /* Butter Yellow Accent */
-    --color-butter-light: #FBF2D5;    /* Butter Yellow Soft Tint */
-    --color-cream: #FFF9E9;           /* Warm Cream Base */
-    --color-cream-light: #FFFDF7;     /* Luminous Cream Canvas */
-    --color-powder: #B9C8E8;          /* Powder Blue */
-    --color-powder-soft: #EDF2FA;     /* Powder Blue Soft Tint */
-    --color-forest-deep: #1F3D2B;     /* Primary deep contrast text */
-    --color-forest-rich: #284E38;     
-    --color-surface-card: #FFFFFF;    /* Crisp card surface */
+    /* Palette: Navy × Powder Blue × Butter Cream */
+    --color-primary: #233B53;
+    /* Navy Primary */
+    --color-primary-deep: #162637;
+    /* Darker Navy */
+    --color-primary-light: #2D4C6B;
+    /* Lighter Navy */
+    --color-bg-warm: #FAFAF7;
+    /* Warm Off-White Canvas */
+    --color-secondary: #DCEAF7;
+    /* Powder Blue */
+    --color-accent: #FFF3D6;
+    /* Butter Cream Accent */
+    --color-text-navy: #1C2430;
+    /* Dark Charcoal Text */
+    --color-text-muted: #566474;
+    /* Balanced secondary muted text */
+    --color-border-soft: #E6ECF1;
+    /* Crisp Light Blue-Gray Border */
+    --color-surface-card: #FFFFFF;
+    /* Crisp white card surface */
 }
 
 /* Custom smooth transitions & animations */
@@ -25,65 +37,145 @@ html {
     scroll-behavior: smooth;
 }
 
-html, body {
+html,
+body {
     max-width: 100%;
     overflow-x: clip;
 }
 
-/* Clean Aesthetic Glass & Card Styling with Powder Blue & Butter Yellow accents */
+/* Clean Aesthetic Glass & Card Styling with Soft Light Borders & Navy Accents */
 .clean-card {
-    background: rgba(255, 255, 255, 0.94);
+    background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(185, 200, 232, 0.35);
-    box-shadow: 0 4px 20px -2px rgba(185, 200, 232, 0.16), 0 1px 3px 0 rgba(242, 216, 135, 0.08);
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid #E6ECF1;
+    box-shadow: 0 4px 20px -2px rgba(28, 36, 48, 0.04), 0 1px 3px 0 rgba(35, 59, 83, 0.03);
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.28s ease,
+                box-shadow 0.28s ease;
+    will-change: transform, box-shadow;
 }
 
 .clean-card:hover {
-    border-color: rgba(242, 216, 135, 0.75);
-    box-shadow: 0 14px 32px -4px rgba(185, 200, 232, 0.28), 0 4px 12px -2px rgba(242, 216, 135, 0.18);
+    transform: translateY(-3px);
+    border-color: rgba(35, 59, 83, 0.35);
+    box-shadow: 0 14px 32px -4px rgba(28, 36, 48, 0.08), 0 4px 12px -2px rgba(220, 234, 247, 0.45);
 }
 
-/* Custom Subtle Scrollbar using Warm Cream & Powder Blue */
+/* Subtle Interactive Hover Lift for general interactive elements */
+.hover-lift {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+    will-change: transform;
+}
+
+.hover-lift:hover {
+    transform: translateY(-2px);
+}
+
+/* ============================================================ */
+/* Smooth Scroll-Reveal & Staggered Animations                  */
+/* ============================================================ */
+.reveal-section {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-section.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered Child Items */
+.reveal-item {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-item.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Active Navbar Link Highlighting */
+.nav-pill-item.is-active-nav {
+    color: #233B53 !important;
+    background-color: #DCEAF7 !important;
+    font-weight: 700 !important;
+}
+
+.mobile-nav-link.is-active-nav {
+    color: #233B53 !important;
+    background-color: #DCEAF7 !important;
+    font-weight: 700 !important;
+}
+
+/* Custom Subtle Scrollbar using Warm Off-White & Crisp Border */
 ::-webkit-scrollbar {
     width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #FFF9E9;
+    background: #FAFAF7;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #B9C8E8;
+    background: #E6ECF1;
     border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #F2D887;
+    background: #233B53;
+}
+
+/* Custom Subtle Scrollbar using Warm Off-White & Soft Gray */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #FAF8F7;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #E8E2E5;
+    border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #800F2F;
 }
 
 /* Netflix-style horizontal scroll row — hidden scrollbar */
 .netflix-scroll {
-    scrollbar-width: none;        /* Firefox */
-    -ms-overflow-style: none;     /* IE/Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE/Edge */
     -webkit-overflow-scrolling: touch;
     scroll-padding-left: 1rem;
-    touch-action: pan-y;          /* Allow vertical scroll while enabling horizontal drag */
+    touch-action: pan-y;
+    /* Allow vertical scroll while enabling horizontal drag */
 }
 
 .netflix-scroll::-webkit-scrollbar {
-    display: none;                /* Chrome/Safari */
+    display: none;
+    /* Chrome/Safari */
 }
 
-/* 3D / Layered Carousel Effect with Butter Yellow & Powder Blue Highlights */
+/* 3D / Layered Carousel Effect with Navy Accents */
 .project-card-item {
     position: relative;
     transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
-                opacity 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
-                border-color 0.4s ease,
-                box-shadow 0.5s ease,
-                filter 0.5s ease;
+        opacity 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+        border-color 0.4s ease,
+        box-shadow 0.5s ease,
+        filter 0.5s ease;
     transform-origin: center center;
     will-change: transform, opacity;
 }
@@ -93,10 +185,10 @@ html, body {
     transform: scale(1.08) translateY(-4px);
     z-index: 30;
     opacity: 1;
-    border-color: #F2D887 !important;
-    box-shadow: 0 20px 40px -12px rgba(31, 61, 43, 0.12),
-                0 0 0 2px #F2D887,
-                0 8px 24px -4px rgba(242, 216, 135, 0.35);
+    border-color: #233B53 !important;
+    box-shadow: 0 20px 40px -12px rgba(28, 36, 48, 0.12),
+        0 0 0 2px #233B53,
+        0 8px 24px -4px rgba(35, 59, 83, 0.25);
     filter: none;
 }
 
@@ -105,13 +197,13 @@ html, body {
     transform: scale(0.88);
     z-index: 10;
     opacity: 0.45;
-    filter: brightness(0.95) saturate(0.85);
+    filter: brightness(0.96) saturate(0.88);
 }
 
 .project-card-item:not(.is-active):hover {
     opacity: 0.75;
     transform: scale(0.91);
-    filter: brightness(0.98) saturate(0.92);
+    filter: brightness(0.98) saturate(0.94);
     cursor: pointer;
 }
 
@@ -136,10 +228,17 @@ html, body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .parallax-orb,
-    .section-gradient-accent {
+    .section-gradient-accent,
+    .clean-card,
+    .hover-lift,
+    .reveal-section,
+    .reveal-item,
+    .project-card-item {
         transform: none !important;
         transition: none !important;
+        opacity: 1 !important;
     }
 
     *,
@@ -151,32 +250,3 @@ html, body {
         scroll-behavior: auto !important;
     }
 }
-
-/* Interactive Parallax & Section Gradient Accents */
-.parallax-orb {
-    will-change: transform;
-    pointer-events: none;
-    max-width: 90vw;
-    max-height: 90vw;
-}
-
-.section-gradient-accent {
-    position: absolute;
-    pointer-events: none;
-    border-radius: 9999px;
-    filter: blur(52px);
-    opacity: 0.8;
-    will-change: transform;
-    z-index: 0;
-    max-width: 90vw;
-    max-height: 90vw;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .parallax-orb,
-    .section-gradient-accent {
-        transform: none !important;
-        transition: none !important;
-    }
-}
-
