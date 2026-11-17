@@ -1,3 +1,79 @@
+import { translations } from './translations.js';
+
+// Bilingual (EN / ID) Language Switcher
+const I18N_STORAGE_KEY = 'tiara_portfolio_lang';
+let currentLanguage = 'en';
+
+export function setLanguage(lang) {
+    if (!translations[lang]) return;
+    currentLanguage = lang;
+    try {
+        localStorage.setItem(I18N_STORAGE_KEY, lang);
+    } catch (e) {
+        // localStorage might be unavailable in private browsing
+    }
+
+    // Set <html lang="...">
+    document.documentElement.lang = lang;
+
+    // Update text content for elements with data-i18n
+    const elements = document.querySelectorAll('[data-i18n]');
+    elements.forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key] !== undefined) {
+            el.textContent = translations[lang][key];
+        }
+    });
+
+    // Update attributes (e.g. data-i18n-attr="aria-label:exp.prev_aria")
+    const attrElements = document.querySelectorAll('[data-i18n-attr]');
+    attrElements.forEach(el => {
+        const spec = el.getAttribute('data-i18n-attr');
+        if (!spec) return;
+        const [attrName, key] = spec.split(':');
+        if (attrName && key && translations[lang] && translations[lang][key] !== undefined) {
+            el.setAttribute(attrName, translations[lang][key]);
+        }
+    });
+
+    // Update Switcher UI Buttons (active state)
+    const allLangButtons = document.querySelectorAll('[data-lang-btn]');
+    allLangButtons.forEach(btn => {
+        const btnLang = btn.getAttribute('data-lang-btn');
+        const isActive = btnLang === lang;
+        btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        if (isActive) {
+            btn.className = 'lang-btn px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full transition-all duration-200 cursor-pointer bg-[#233B53] text-white shadow-2xs font-bold';
+        } else {
+            btn.className = 'lang-btn px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full transition-all duration-200 cursor-pointer text-[#1C2430]/70 hover:text-[#233B53] font-semibold';
+        }
+    });
+}
+
+function initLanguageSwitcher() {
+    let savedLang = 'en';
+    try {
+        savedLang = localStorage.getItem(I18N_STORAGE_KEY) || 'en';
+    } catch (e) {
+        savedLang = 'en';
+    }
+
+    // Attach click listeners to all language switcher buttons (desktop & mobile)
+    document.addEventListener('click', (e) => {
+        const targetBtn = e.target.closest('[data-lang-btn]');
+        if (targetBtn) {
+            e.preventDefault();
+            const lang = targetBtn.getAttribute('data-lang-btn');
+            if (lang && lang !== currentLanguage) {
+                setLanguage(lang);
+            }
+        }
+    });
+
+    // Apply initial language
+    setLanguage(savedLang);
+}
+
 // Initialize Project Carousel — Infinite Loop with DOM Cloning
 function initProjectCarousel() {
     const container = document.getElementById('projects-grid');
@@ -548,6 +624,74 @@ function initScrollReveal() {
     });
 }
 
+// Copy Email to Clipboard Feature with Visual Feedback
+function initCopyEmail() {
+    const copyBtn = document.getElementById('copy-email-btn');
+    if (!copyBtn) return;
+
+    let resetTimer = null;
+
+    copyBtn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const email = copyBtn.getAttribute('data-email') || 'tiaraariyantoputrii@gmail.com';
+        const textSpan = document.getElementById('copy-email-text');
+        const iconSvg = document.getElementById('copy-email-icon');
+
+        try {
+            if (navigator.clipboard && window.isSecureContext) {
+                await navigator.clipboard.writeText(email);
+            } else {
+                // Fallback for non-https or restricted environments
+                const tempInput = document.createElement('textarea');
+                tempInput.value = email;
+                tempInput.style.position = 'fixed';
+                tempInput.style.opacity = '0';
+                document.body.appendChild(tempInput);
+                tempInput.focus();
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+            }
+
+            // Visual Success State
+            const currentLang = document.documentElement.lang || 'en';
+            const copiedText = (translations[currentLang] && translations[currentLang]['contact.email_copied']) || 'Copied!';
+            
+            if (textSpan) {
+                textSpan.textContent = copiedText;
+            }
+
+            copyBtn.classList.remove('bg-[#FAFAF7]', 'text-[#233B53]', 'border-[#E6ECF1]');
+            copyBtn.classList.add('bg-emerald-500', 'text-white', 'border-emerald-600', 'shadow-xs');
+
+            if (iconSvg) {
+                // Checkmark icon
+                iconSvg.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />';
+            }
+
+            if (resetTimer) clearTimeout(resetTimer);
+            resetTimer = setTimeout(() => {
+                const revertLang = document.documentElement.lang || 'en';
+                const originalText = (translations[revertLang] && translations[revertLang]['contact.copy_email']) || 'Copy Email';
+                if (textSpan) {
+                    textSpan.textContent = originalText;
+                }
+                copyBtn.classList.remove('bg-emerald-500', 'text-white', 'border-emerald-600', 'shadow-xs');
+                copyBtn.classList.add('bg-[#FAFAF7]', 'text-[#233B53]', 'border-[#E6ECF1]');
+                if (iconSvg) {
+                    // Restore copy icon
+                    iconSvg.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />';
+                }
+            }, 2000);
+
+        } catch (err) {
+            console.error('Failed to copy email:', err);
+        }
+    });
+}
+
 // Active Navbar Link Highlighting based on Scroll Position (ScrollSpy)
 function initActiveNavbarSpy() {
     const navLinks = document.querySelectorAll('#navbar-links .nav-pill-item');
@@ -597,6 +741,8 @@ function initActiveNavbarSpy() {
 
 // Initialize on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
+    initLanguageSwitcher();
+    initCopyEmail();
     initStickyNavbar();
     initBackToTop();
     initProjectFilter();

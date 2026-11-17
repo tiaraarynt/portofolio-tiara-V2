@@ -64,18 +64,38 @@
 
             <!-- Center: Navigation Links (Desktop Compact Font Sizes & Spacing) -->
             <div id="navbar-links" class="hidden md:flex items-center gap-1.5 lg:gap-2 text-[11.5px] lg:text-xs font-semibold tracking-wide text-stone-600">
-                <a href="#education" class="nav-pill-item px-2.5 lg:px-3 py-1 rounded-full hover:text-[#233B53] hover:bg-[#DCEAF7] transition-all whitespace-nowrap">Education</a>
-                <a href="#experience" class="nav-pill-item px-2.5 lg:px-3 py-1 rounded-full hover:text-[#233B53] hover:bg-[#DCEAF7] transition-all whitespace-nowrap">Experience</a>
-                <a href="#projects" class="nav-pill-item px-2.5 lg:px-3 py-1 rounded-full hover:text-[#233B53] hover:bg-[#DCEAF7] transition-all whitespace-nowrap">Projects</a>
-                <a href="#certifications" class="nav-pill-item px-2.5 lg:px-3 py-1 rounded-full hover:text-[#233B53] hover:bg-[#DCEAF7] transition-all whitespace-nowrap">Certifications</a>
-                <a href="#skills" class="nav-pill-item px-2.5 lg:px-3 py-1 rounded-full hover:text-[#233B53] hover:bg-[#DCEAF7] transition-all whitespace-nowrap">Skills</a>
-                <a href="#contact" class="nav-pill-item px-2.5 lg:px-3 py-1 rounded-full hover:text-[#233B53] hover:bg-[#DCEAF7] transition-all whitespace-nowrap">Contact</a>
+                <a href="#education" class="nav-pill-item px-2.5 lg:px-3 py-1 rounded-full hover:text-[#233B53] hover:bg-[#DCEAF7] transition-all whitespace-nowrap" data-i18n="nav.education">Education</a>
+                <a href="#experience" class="nav-pill-item px-2.5 lg:px-3 py-1 rounded-full hover:text-[#233B53] hover:bg-[#DCEAF7] transition-all whitespace-nowrap" data-i18n="nav.experience">Experience</a>
+                <a href="#projects" class="nav-pill-item px-2.5 lg:px-3 py-1 rounded-full hover:text-[#233B53] hover:bg-[#DCEAF7] transition-all whitespace-nowrap" data-i18n="nav.projects">Projects</a>
+                <a href="#certifications" class="nav-pill-item px-2.5 lg:px-3 py-1 rounded-full hover:text-[#233B53] hover:bg-[#DCEAF7] transition-all whitespace-nowrap" data-i18n="nav.certifications">Certifications</a>
+                <a href="#skills" class="nav-pill-item px-2.5 lg:px-3 py-1 rounded-full hover:text-[#233B53] hover:bg-[#DCEAF7] transition-all whitespace-nowrap" data-i18n="nav.skills">Skills</a>
+                <a href="#contact" class="nav-pill-item px-2.5 lg:px-3 py-1 rounded-full hover:text-[#233B53] hover:bg-[#DCEAF7] transition-all whitespace-nowrap" data-i18n="nav.contact">Contact</a>
             </div>
 
-            <!-- Right: Action CTA & Mobile Menu Toggle (Prevent Wrapping) -->
-            <div class="flex items-center gap-2 shrink-0">
+            <!-- Right: Language Switcher, Action CTA & Mobile Menu Toggle -->
+            <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                <!-- EN / ID Language Switcher Pill -->
+                <div class="lang-switcher-pill inline-flex items-center p-0.5 rounded-full bg-[#FAFAF7] border border-[#E6ECF1] shadow-2xs text-[11px] font-bold font-mono tracking-wider shrink-0" role="group" aria-label="Language switcher">
+                    <button 
+                        type="button" 
+                        data-lang-btn="en" 
+                        class="lang-btn px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full transition-all duration-200 cursor-pointer bg-[#233B53] text-white shadow-2xs"
+                        aria-pressed="true"
+                    >
+                        EN
+                    </button>
+                    <button 
+                        type="button" 
+                        data-lang-btn="id" 
+                        class="lang-btn px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full transition-all duration-200 cursor-pointer text-[#1C2430]/70 hover:text-[#233B53]"
+                        aria-pressed="false"
+                    >
+                        ID
+                    </button>
+                </div>
+
                 <a href="#contact" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 lg:px-4 py-1 sm:py-1.5 rounded-full bg-[#233B53] hover:bg-[#162637] text-white text-[11px] lg:text-xs font-bold tracking-tight transition-all shadow-xs active:scale-95 whitespace-nowrap shrink-0">
-                    <span class="whitespace-nowrap">Get in Touch</span>
+                    <span class="whitespace-nowrap" data-i18n="nav.get_in_touch">Get in Touch</span>
                     <svg class="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
@@ -99,15 +119,38 @@
 
         <!-- Mobile Dropdown Menu -->
         <div id="mobile-menu" class="hidden md:hidden absolute top-full left-3 right-3 mt-2 p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-[#E6ECF1] shadow-lg flex flex-col gap-1 transition-all z-50">
-            <a href="#education" class="mobile-nav-link px-3 py-2 rounded-xl text-xs font-semibold text-[#1C2430] hover:bg-[#DCEAF7] hover:text-[#233B53] transition-colors">Education</a>
-            <a href="#experience" class="mobile-nav-link px-3 py-2 rounded-xl text-xs font-semibold text-[#1C2430] hover:bg-[#DCEAF7] hover:text-[#233B53] transition-colors">Experience</a>
-            <a href="#projects" class="mobile-nav-link px-3 py-2 rounded-xl text-xs font-semibold text-[#1C2430] hover:bg-[#DCEAF7] hover:text-[#233B53] transition-colors">Projects</a>
-            <a href="#certifications" class="mobile-nav-link px-3 py-2 rounded-xl text-xs font-semibold text-[#1C2430] hover:bg-[#DCEAF7] hover:text-[#233B53] transition-colors">Certifications</a>
-            <a href="#skills" class="mobile-nav-link px-3 py-2 rounded-xl text-xs font-semibold text-[#1C2430] hover:bg-[#DCEAF7] hover:text-[#233B53] transition-colors">Skills</a>
-            <a href="#contact" class="mobile-nav-link px-3 py-2 rounded-xl text-xs font-semibold text-[#1C2430] hover:bg-[#DCEAF7] hover:text-[#233B53] transition-colors">Contact</a>
+            <!-- Mobile Language Switcher Row -->
+            <div class="flex items-center justify-between px-3 py-2 mb-1 pb-2 border-b border-stone-100">
+                <span class="text-xs font-bold text-[#1C2430]">Language / Bahasa</span>
+                <div class="lang-switcher-pill inline-flex items-center p-0.5 rounded-full bg-[#FAFAF7] border border-[#E6ECF1] shadow-2xs text-[11px] font-bold font-mono tracking-wider" role="group" aria-label="Mobile Language switcher">
+                    <button 
+                        type="button" 
+                        data-lang-btn="en" 
+                        class="lang-btn px-2.5 py-0.5 rounded-full transition-all duration-200 cursor-pointer bg-[#233B53] text-white shadow-2xs"
+                        aria-pressed="true"
+                    >
+                        EN
+                    </button>
+                    <button 
+                        type="button" 
+                        data-lang-btn="id" 
+                        class="lang-btn px-2.5 py-0.5 rounded-full transition-all duration-200 cursor-pointer text-[#1C2430]/70 hover:text-[#233B53]"
+                        aria-pressed="false"
+                    >
+                        ID
+                    </button>
+                </div>
+            </div>
+
+            <a href="#education" class="mobile-nav-link px-3 py-2 rounded-xl text-xs font-semibold text-[#1C2430] hover:bg-[#DCEAF7] hover:text-[#233B53] transition-colors" data-i18n="nav.education">Education</a>
+            <a href="#experience" class="mobile-nav-link px-3 py-2 rounded-xl text-xs font-semibold text-[#1C2430] hover:bg-[#DCEAF7] hover:text-[#233B53] transition-colors" data-i18n="nav.experience">Experience</a>
+            <a href="#projects" class="mobile-nav-link px-3 py-2 rounded-xl text-xs font-semibold text-[#1C2430] hover:bg-[#DCEAF7] hover:text-[#233B53] transition-colors" data-i18n="nav.projects">Projects</a>
+            <a href="#certifications" class="mobile-nav-link px-3 py-2 rounded-xl text-xs font-semibold text-[#1C2430] hover:bg-[#DCEAF7] hover:text-[#233B53] transition-colors" data-i18n="nav.certifications">Certifications</a>
+            <a href="#skills" class="mobile-nav-link px-3 py-2 rounded-xl text-xs font-semibold text-[#1C2430] hover:bg-[#DCEAF7] hover:text-[#233B53] transition-colors" data-i18n="nav.skills">Skills</a>
+            <a href="#contact" class="mobile-nav-link px-3 py-2 rounded-xl text-xs font-semibold text-[#1C2430] hover:bg-[#DCEAF7] hover:text-[#233B53] transition-colors" data-i18n="nav.contact">Contact</a>
             <div class="pt-2 mt-1 border-t border-stone-100 sm:hidden">
                 <a href="#contact" class="mobile-nav-link flex items-center justify-center gap-1.5 w-full py-2 rounded-xl bg-[#233B53] text-white text-xs font-bold shadow-xs">
-                    <span>Get in Touch</span>
+                    <span data-i18n="nav.get_in_touch">Get in Touch</span>
                     <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
@@ -129,12 +172,12 @@
             <!-- Left: Copyright Statement -->
             <div class="text-center sm:text-left">
                 <span class="font-bold text-[#1C2430]">© 2026 Tiara Ariyanto Putri.</span>
-                <span class="text-stone-400">All rights reserved.</span>
+                <span class="text-stone-400" data-i18n="footer.rights">All rights reserved.</span>
             </div>
 
             <!-- Right: Actual Stack Used (Uniform Color Matching 'Built with') -->
             <div class="flex flex-wrap items-center justify-center sm:justify-end gap-1.5 text-stone-400">
-                <span>Built with</span>
+                <span data-i18n="footer.built_with">Built with</span>
                 <span>Laravel</span>
                 <span>•</span>
                 <span>JavaScript</span>

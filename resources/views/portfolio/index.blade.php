@@ -18,22 +18,22 @@
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#233B53] opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-2 w-2 bg-[#233B53]"></span>
                     </span>
-                    <span class="font-medium tracking-tight">Fresh Graduate · Full-Stack Developer · UI/UX Designer · Manual Testing</span>
+                    <span class="font-medium tracking-tight" data-i18n="hero.badge">Fresh Graduate · Full-Stack Developer · UI/UX Designer · Manual Testing</span>
                 </div>
 
                 <!-- Main Headline: Serif & Sans-Serif Combination on the same line on desktop -->
                 <div class="space-y-2 sm:space-y-3 w-full">
                     <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-[68px] xl:text-[76px] font-extrabold text-[#1C2430] tracking-tight leading-[1.1] flex flex-wrap items-baseline gap-x-2.5 sm:gap-x-3.5">
-                        <span>Hello, I'm</span>
+                        <span data-i18n="hero.greeting">Hello, I'm</span>
                         <span class="font-serif italic font-normal text-[#233B53] tracking-normal">Tiara.</span>
                     </h1>
-                    <div class="text-lg sm:text-xl lg:text-2xl font-bold text-stone-700 tracking-tight pt-0.5">
+                    <div class="text-lg sm:text-xl lg:text-2xl font-bold text-stone-700 tracking-tight pt-0.5" data-i18n="hero.role">
                         Software Engineer
                     </div>
                 </div>
 
                 <!-- Professional Bio Statement -->
-                <p class="text-xs sm:text-sm text-stone-600 leading-relaxed font-normal max-w-xl">
+                <p class="text-xs sm:text-sm text-stone-600 leading-relaxed font-normal max-w-xl" data-i18n="hero.bio">
                     Software Engineering graduate from IPB University specializing in web development, UI/UX design, and software testing. Experienced in building responsive web applications with Laravel, designing intuitive user experiences with Figma, and ensuring quality through rigorous manual &amp; black box testing.
                 </p>
 
@@ -41,7 +41,7 @@
                 <div class="pt-2 flex items-center w-full">
                     <!-- Get in Touch Button (Prevent Wrapping) -->
                     <a href="#contact" class="px-6 py-2.5 rounded-full bg-[#233B53] hover:bg-[#162637] text-white font-bold text-xs sm:text-sm transition-all shadow-sm shadow-[#233B53]/20 flex items-center gap-2 cursor-pointer active:scale-95 group whitespace-nowrap shrink-0">
-                        <span class="whitespace-nowrap">Get in Touch</span>
+                        <span class="whitespace-nowrap" data-i18n="hero.cta">Get in Touch</span>
                         <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
@@ -57,7 +57,7 @@
                     <!-- Top-Left Location Badge (Burgundy Theme) Aligned Exactly with the Outer White Frame Left Edge -->
                     <div class="absolute -top-3.5 left-0 z-20 px-3 py-1 rounded-full bg-[#233B53] text-white text-[10px] sm:text-[10.5px] font-semibold tracking-tight shadow-md flex items-center gap-1.5 whitespace-nowrap">
                         <span class="text-[10.5px]">📍</span>
-                        <span>Bogor / Depok / Jakarta</span>
+                        <span data-i18n="hero.location">Bogor / Depok / Jakarta</span>
                     </div>
 
                     <!-- Outer Rounded White Frame with Subtle Border & Shadow -->
@@ -87,7 +87,7 @@
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                         </span>
-                        <span>Open to Work</span>
+                        <span data-i18n="hero.open_to_work">Open to Work</span>
                     </div>
 
                 </div>
@@ -106,10 +106,10 @@
         <div class="relative z-10 flex flex-col sm:flex-row sm:items-end justify-between gap-1 border-b border-[#E6ECF1] pb-3">
             <div>
                 <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#1C2430] tracking-tight">
-                    Academic <span class="font-serif italic font-normal text-[#233B53]">Education</span>
+                    <span data-i18n="edu.title_main">Academic</span> <span class="font-serif italic font-normal text-[#233B53]" data-i18n="edu.title_sub">Education</span>
                 </h2>
             </div>
-            <p class="text-xs font-semibold text-[#233B53]">
+            <p class="text-xs font-semibold text-[#233B53]" data-i18n="edu.subtitle">
                 Academic Background
             </p>
         </div>
@@ -127,7 +127,7 @@
                             <div class="space-y-4">
                                 <!-- Period Badge (Only Aug 2022 – Aug 2026) -->
                                 <div class="flex flex-wrap items-center gap-2">
-                                    <span class="text-[11px] font-mono font-bold px-3 py-1 rounded-full bg-[#DCEAF7] text-[#233B53] border border-[#E6ECF1]">
+                                    <span class="text-[11px] font-mono font-bold px-3 py-1 rounded-full bg-[#DCEAF7] text-[#233B53] border border-[#E6ECF1]" data-i18n="edu.period">
                                         Aug 2022 – Aug 2026
                                     </span>
                                 </div>
@@ -144,15 +144,15 @@
                                         >
                                     </div>
                                     <div class="min-w-0 flex-1">
-                                        <div class="text-xs sm:text-sm font-bold text-[#233B53] tracking-tight">
+                                        <div class="text-xs sm:text-sm font-bold text-[#233B53] tracking-tight" data-i18n="edu.institution">
                                             {{ $edu['institution'] }}
                                         </div>
-                                        <h3 class="text-base sm:text-xl font-extrabold text-[#1C2430] leading-snug mt-0.5">
+                                        <h3 class="text-base sm:text-xl font-extrabold text-[#1C2430] leading-snug mt-0.5" data-i18n="edu.degree">
                                             {{ $edu['degree'] }}
                                         </h3>
                                         <div class="text-xs text-stone-500 font-medium mt-1 flex items-center gap-1.5">
                                             <span>📍</span>
-                                            <span>{{ $edu['location'] }}</span>
+                                            <span data-i18n="edu.location">{{ $edu['location'] }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -161,8 +161,8 @@
                             <!-- Bottom Box: Academic Achievement Area (Highlighting GPA) -->
                             <div class="p-4 rounded-2xl bg-[#FAFAF7] border border-[#E6ECF1] flex items-center justify-between gap-4">
                                 <div>
-                                    <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-stone-400 block">Academic Achievement</span>
-                                    <div class="text-xs sm:text-sm font-bold text-[#1C2430] mt-0.5">
+                                    <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-stone-400 block" data-i18n="edu.achievement_title">Academic Achievement</span>
+                                    <div class="text-xs sm:text-sm font-bold text-[#1C2430] mt-0.5" data-i18n="edu.gpa_label">
                                         Cumulative GPA
                                     </div>
                                 </div>
@@ -185,29 +185,29 @@
                             <!-- Key Academic & Engineering Scope -->
                             <div class="space-y-3">
                                 <div class="flex items-center justify-between border-b border-[#E6ECF1] pb-2">
-                                    <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-[#233B53]">
+                                    <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-[#233B53]" data-i18n="edu.scope_title">
                                         Key Academic &amp; Engineering Scope
                                     </span>
-                                    <span class="text-[10px] font-mono text-stone-400">Focus Areas</span>
+                                    <span class="text-[10px] font-mono text-stone-400" data-i18n="edu.scope_focus">Focus Areas</span>
                                 </div>
 
                                 <!-- Scope Points -->
                                 <div class="space-y-2 text-xs sm:text-[13px] text-stone-600 leading-relaxed">
                                     <div class="flex items-start gap-2">
                                         <span class="text-[#233B53] font-bold mt-0.5 shrink-0">✦</span>
-                                        <span><strong class="text-[#1C2430]">Web Development &amp; Architecture:</strong> Full-stack web application development with Laravel, PHP, relational MySQL schemas, and responsive UI.</span>
+                                        <span><strong class="text-[#1C2430]" data-i18n="edu.scope_web_title">Web Development &amp; Architecture:</strong> <span data-i18n="edu.scope_web_desc">Full-stack web application development with Laravel, PHP, relational MySQL schemas, and responsive UI.</span></span>
                                     </div>
                                     <div class="flex items-start gap-2">
                                         <span class="text-[#233B53] font-bold mt-0.5 shrink-0">✦</span>
-                                        <span><strong class="text-[#1C2430]">UI/UX Design &amp; Prototyping:</strong> User research, workflow diagramming with Draw.io, design systems, and interactive prototypes in Figma.</span>
+                                        <span><strong class="text-[#1C2430]" data-i18n="edu.scope_uiux_title">UI/UX Design &amp; Prototyping:</strong> <span data-i18n="edu.scope_uiux_desc">User research, workflow diagramming with Draw.io, design systems, and interactive prototypes in Figma.</span></span>
                                     </div>
                                     <div class="flex items-start gap-2">
                                         <span class="text-[#233B53] font-bold mt-0.5 shrink-0">✦</span>
-                                        <span><strong class="text-[#1C2430]">SDLC &amp; Software Testing:</strong> End-to-end SDLC using Prototyping methodology, structured system analysis, and comprehensive Black Box &amp; usability testing.</span>
+                                        <span><strong class="text-[#1C2430]" data-i18n="edu.scope_sdlc_title">SDLC &amp; Software Testing:</strong> <span data-i18n="edu.scope_sdlc_desc">End-to-end SDLC using Prototyping methodology, structured system analysis, and comprehensive Black Box &amp; usability testing.</span></span>
                                     </div>
                                     <div class="flex items-start gap-2">
                                         <span class="text-[#233B53] font-bold mt-0.5 shrink-0">✦</span>
-                                        <span><strong class="text-[#1C2430]">Capstone Project:</strong> Developed the <em>Education &amp; Training Module (Modul Diklat)</em> for government civil servant (ASN) management.</span>
+                                        <span><strong class="text-[#1C2430]" data-i18n="edu.scope_capstone_title">Capstone Project:</strong> <span data-i18n="edu.scope_capstone_desc">Development and Evaluation of an Education and Training Module on the Internal Website of the Depok City Government.</span></span>
                                     </div>
                                 </div>
                             </div>
@@ -217,7 +217,7 @@
                                 <div class="flex items-center justify-between text-[11px]">
                                     <span class="font-bold text-[#1C2430] flex items-center gap-1.5">
                                         <span class="w-1.5 h-1.5 rounded-full bg-[#233B53]"></span>
-                                        <span>BNSP Certified Software Engineer</span>
+                                        <span data-i18n="edu.bnsp_cert">BNSP Certified Software Engineer</span>
                                     </span>
                                     <span class="text-[10px] font-mono text-stone-400">LSP Vokasi IPB (2026–2029)</span>
                                 </div>
@@ -250,10 +250,10 @@
         <div class="relative z-10 flex flex-col sm:flex-row sm:items-end justify-between gap-1 border-b border-[#E6ECF1] pb-3">
             <div>
                 <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#1C2430] tracking-tight">
-                    Organizational <span class="font-serif italic font-normal text-[#233B53]">Experience</span>
+                    <span data-i18n="org.title_main">Organizational</span> <span class="font-serif italic font-normal text-[#233B53]" data-i18n="org.title_sub">Experience</span>
                 </h2>
             </div>
-            <p class="text-xs font-semibold text-[#233B53]">
+            <p class="text-xs font-semibold text-[#233B53]" data-i18n="org.subtitle">
                 Active committee &amp; team contribution
             </p>
         </div>
@@ -276,7 +276,7 @@
                                     <span class="text-[11px] font-bold drop-shadow-sm">
                                         OMVI 2023 Committee
                                     </span>
-                                    <span class="text-[9px] font-mono px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md border border-white/25 text-white font-semibold">VCD Team</span>
+                                    <span class="text-[9px] font-mono px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md border border-white/25 text-white font-semibold" data-i18n="org.team_badge">VCD Team</span>
                                 </div>
                             </div>
                         </div>
@@ -288,20 +288,20 @@
                                 <span class="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-[#DCEAF7] text-[#233B53] border border-[#E6ECF1] shadow-2xs">
                                     {{ $org['period'] }}
                                 </span>
-                                <span class="text-[10px] font-bold text-[#233B53] bg-white px-2.5 py-0.5 rounded-full border border-[#E6ECF1]">
+                                <span class="text-[10px] font-bold text-[#233B53] bg-white px-2.5 py-0.5 rounded-full border border-[#E6ECF1]" data-i18n="org.badge_committee">
                                     Committee &amp; Events
                                 </span>
-                                <span class="text-[10px] font-medium text-stone-500 px-2 py-0.5 rounded-md bg-[#FAFAF7] border border-[#E6ECF1]">
+                                <span class="text-[10px] font-medium text-stone-500 px-2 py-0.5 rounded-md bg-[#FAFAF7] border border-[#E6ECF1]" data-i18n="org.badge_scope">
                                     Campus Annual Event
                                 </span>
                             </div>
 
                             <!-- Role Title & Organization Name -->
                             <div>
-                                <h3 class="text-sm sm:text-base font-extrabold text-[#1C2430] leading-snug">
+                                <h3 class="text-sm sm:text-base font-extrabold text-[#1C2430] leading-snug" data-i18n="org.role">
                                     {{ $org['role'] }}
                                 </h3>
-                                <div class="text-[11px] sm:text-xs font-bold text-[#233B53] mt-0.5">
+                                <div class="text-[11px] sm:text-xs font-bold text-[#233B53] mt-0.5" data-i18n="org.institution">
                                     {{ $org['organisation'] }}
                                 </div>
                             </div>
@@ -310,25 +310,25 @@
                             <div class="space-y-1 pt-0.5 border-t border-[#E6ECF1]">
                                 <div class="flex items-start gap-1.5 text-xs text-stone-600 leading-normal">
                                     <span class="text-[#233B53] font-bold mt-0.5 shrink-0 text-[10px]">✦</span>
-                                    <span>Designed promotional Instagram posts and story updates.</span>
+                                    <span data-i18n="org.bullet_1">Designed promotional Instagram posts and story updates.</span>
                                 </div>
                                 <div class="flex items-start gap-1.5 text-xs text-stone-600 leading-normal">
                                     <span class="text-[#233B53] font-bold mt-0.5 shrink-0 text-[10px]">✦</span>
-                                    <span>Designed official event merchandise including T-shirts, lanyards, and staff ID cards.</span>
+                                    <span data-i18n="org.bullet_2">Designed official event merchandise including T-shirts, lanyards, and staff ID cards.</span>
                                 </div>
                                 <div class="flex items-start gap-1.5 text-xs text-stone-600 leading-normal">
                                     <span class="text-[#233B53] font-bold mt-0.5 shrink-0 text-[10px]">✦</span>
-                                    <span>Created visual stage concepts, backdrops, and event hall decorations.</span>
+                                    <span data-i18n="org.bullet_3">Created visual stage concepts, backdrops, and event hall decorations.</span>
                                 </div>
                             </div>
 
                             <!-- Applied Tools & Deliverables Tags -->
                             <div class="pt-1 flex flex-wrap items-center gap-1">
-                                <span class="text-[10px] font-mono font-bold text-stone-400 mr-1">Deliverables:</span>
+                                <span class="text-[10px] font-mono font-bold text-stone-400 mr-1" data-i18n="org.deliverables_label">Deliverables:</span>
                                 <span class="px-2 py-0.5 rounded-md text-[9px] font-bold font-mono bg-[#DCEAF7] text-[#233B53] border border-[#E6ECF1]">Canva</span>
-                                <span class="px-2 py-0.5 rounded-md text-[9px] font-bold font-mono bg-white text-[#1C2430] border border-[#E6ECF1]">Merchandise Design</span>
-                                <span class="px-2 py-0.5 rounded-md text-[9px] font-bold font-mono bg-[#DCEAF7] text-[#233B53] border border-[#E6ECF1]">Stage Setup</span>
-                                <span class="px-2 py-0.5 rounded-md text-[9px] font-bold font-mono bg-white text-[#1C2430] border border-[#E6ECF1]">Team Collaboration</span>
+                                <span class="px-2 py-0.5 rounded-md text-[9px] font-bold font-mono bg-white text-[#1C2430] border border-[#E6ECF1]" data-i18n="org.deliv_merch">Merchandise Design</span>
+                                <span class="px-2 py-0.5 rounded-md text-[9px] font-bold font-mono bg-[#DCEAF7] text-[#233B53] border border-[#E6ECF1]" data-i18n="org.deliv_stage">Stage Setup</span>
+                                <span class="px-2 py-0.5 rounded-md text-[9px] font-bold font-mono bg-white text-[#1C2430] border border-[#E6ECF1]" data-i18n="org.deliv_collab">Team Collaboration</span>
                             </div>
                         </div>
                     </div>
@@ -347,15 +347,15 @@
         <div class="relative z-10 flex items-center justify-between gap-3 border-b border-[#E6ECF1] pb-3">
             <div class="min-w-0 flex-1">
                 <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#1C2430] tracking-tight leading-tight">
-                    Work <span class="font-serif italic font-normal text-[#233B53]">Experience</span>
+                    <span data-i18n="exp.title_main">Work</span> <span class="font-serif italic font-normal text-[#233B53]" data-i18n="exp.title_sub">Experience</span>
                 </h2>
             </div>
             <!-- Navigation Prev/Next Buttons -->
             <div class="flex items-center gap-1.5 flex-shrink-0">
-                <button type="button" onclick="scrollCarousel('exp-scroll-container', -340)" class="w-8 h-8 rounded-full border border-[#E6ECF1] bg-white hover:bg-[#DCEAF7] hover:border-[#233B53]/40 text-[#233B53] flex items-center justify-center transition-all shadow-2xs cursor-pointer active:scale-95" aria-label="Scroll Left">
+                <button type="button" onclick="scrollCarousel('exp-scroll-container', -340)" class="w-8 h-8 rounded-full border border-[#E6ECF1] bg-white hover:bg-[#DCEAF7] hover:border-[#233B53]/40 text-[#233B53] flex items-center justify-center transition-all shadow-2xs cursor-pointer active:scale-95" aria-label="Scroll Left" data-i18n-attr="aria-label:exp.prev_aria">
                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
                 </button>
-                <button type="button" onclick="scrollCarousel('exp-scroll-container', 340)" class="w-8 h-8 rounded-full border border-[#E6ECF1] bg-white hover:bg-[#DCEAF7] hover:border-[#233B53]/40 text-[#233B53] flex items-center justify-center transition-all shadow-2xs cursor-pointer active:scale-95" aria-label="Scroll Right">
+                <button type="button" onclick="scrollCarousel('exp-scroll-container', 340)" class="w-8 h-8 rounded-full border border-[#E6ECF1] bg-white hover:bg-[#DCEAF7] hover:border-[#233B53]/40 text-[#233B53] flex items-center justify-center transition-all shadow-2xs cursor-pointer active:scale-95" aria-label="Scroll Right" data-i18n-attr="aria-label:exp.next_aria">
                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
                 </button>
             </div>
@@ -395,15 +395,15 @@
 
                             <!-- Role Title & Organization (No Truncation / Ellipsis, Full Natural Wrapping) -->
                             <div class="space-y-1">
-                                <h3 class="text-sm sm:text-base font-extrabold text-[#1C2430] leading-snug">
+                                <h3 class="text-sm sm:text-base font-extrabold text-[#1C2430] leading-snug" data-i18n="exp.{{ $index }}.role">
                                     {{ $exp['role'] }}
                                 </h3>
-                                <div class="text-xs sm:text-[13px] font-bold text-[#233B53] leading-snug">
+                                <div class="text-xs sm:text-[13px] font-bold text-[#233B53] leading-snug" data-i18n="exp.{{ $index }}.company">
                                     {{ $exp['company'] }}
                                 </div>
                                 <div class="text-[11px] text-stone-500 font-medium flex items-center gap-1 pt-0.5">
                                     <span>📍</span>
-                                    <span>{{ $exp['location'] }}</span>
+                                    <span data-i18n="exp.{{ $index }}.location">{{ $exp['location'] }}</span>
                                 </div>
                             </div>
 
@@ -412,14 +412,14 @@
 
                             <!-- Job Descriptions with Burgundy Outlined Check Icons -->
                             <div class="space-y-2 flex-1">
-                                @foreach($exp['points'] as $point)
+                                @foreach($exp['points'] as $pIndex => $point)
                                     <div class="flex items-start gap-2 text-xs text-stone-600 leading-relaxed font-normal">
                                         <span class="shrink-0 mt-0.5 w-4 h-4 rounded-full border border-[#233B53] bg-[#FAFAF7] text-[#233B53] flex items-center justify-center shadow-2xs">
                                             <svg class="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
                                             </svg>
                                         </span>
-                                        <span>{{ $point }}</span>
+                                        <span data-i18n="exp.{{ $index }}.point_{{ $pIndex }}">{{ $point }}</span>
                                     </div>
                                 @endforeach
                             </div>
@@ -429,8 +429,8 @@
                         @if(!empty($exp['skills']))
                             <div class="pt-3.5 mt-4 border-t border-[#E6ECF1]">
                                 <div class="flex flex-wrap items-center gap-1.5">
-                                    @foreach($exp['skills'] as $skillTag)
-                                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-[#FAFAF7] text-[#1C2430] border border-[#E6ECF1] hover:bg-[#DCEAF7] hover:text-[#233B53] transition-colors">
+                                    @foreach($exp['skills'] as $sIndex => $skillTag)
+                                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-[#FAFAF7] text-[#1C2430] border border-[#E6ECF1] hover:bg-[#DCEAF7] hover:text-[#233B53] transition-colors" data-i18n="exp.{{ $index }}.skill_{{ $sIndex }}">
                                             {{ $skillTag }}
                                         </span>
                                     @endforeach
@@ -453,7 +453,7 @@
         <div class="relative z-10 flex items-center justify-between gap-3 border-b border-[#E6ECF1] pb-2.5">
             <div class="min-w-0 flex-1">
                 <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#1C2430] tracking-tight truncate">
-                    Featured <span class="font-serif italic font-normal text-[#233B53]">Projects</span>
+                    <span data-i18n="proj.title_main">Featured</span> <span class="font-serif italic font-normal text-[#233B53]" data-i18n="proj.title_sub">Projects</span>
                 </h2>
             </div>
 
@@ -498,7 +498,7 @@
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                             </svg>
                                         </div>
-                                        <span class="text-[8.5px] font-mono font-bold text-[#233B53]/75 tracking-wider uppercase">
+                                        <span class="text-[8.5px] font-mono font-bold text-[#233B53]/75 tracking-wider uppercase" data-i18n="proj.preview">
                                             Project Preview
                                         </span>
                                     </div>
@@ -517,7 +517,7 @@
                             <div class="flex flex-col">
                                 <!-- Project Title: Bold uppercase, wrapped naturally -->
                                 <div>
-                                    <h3 class="text-xs sm:text-[13px] font-black text-[#1C2430] tracking-tight leading-snug uppercase">
+                                    <h3 class="text-xs sm:text-[13px] font-black text-[#1C2430] tracking-tight leading-snug uppercase" data-i18n="proj.{{ $index }}.title">
                                         {{ $project['title'] }}
                                     </h3>
                                 </div>
@@ -533,7 +533,7 @@
 
                                 <!-- Project Description (Compact container with natural line height) -->
                                 <div class="mt-2.5">
-                                    <p class="text-[10.5px] text-stone-600 leading-relaxed font-normal">
+                                    <p class="text-[10.5px] text-stone-600 leading-relaxed font-normal" data-i18n="proj.{{ $index }}.desc">
                                         {{ $project['description'] }}
                                     </p>
                                 </div>
@@ -548,7 +548,7 @@
                                         rel="noopener noreferrer" 
                                         class="inline-flex items-center gap-1 font-bold text-[#233B53] hover:text-[#162637] transition-colors text-[10.5px] group/link py-0.5"
                                     >
-                                        <span>View Project</span>
+                                        <span data-i18n="proj.view">View Project</span>
                                         <svg class="w-3 h-3 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                                         </svg>
@@ -556,7 +556,7 @@
                                     <!-- Subtle External Link Icon on Right -->
                                     <span class="text-stone-300 text-xs pointer-events-none">↗</span>
                                 @else
-                                    <span class="text-[9.5px] font-mono text-stone-400 font-semibold italic">
+                                    <span class="text-[9.5px] font-mono text-stone-400 font-semibold italic" data-i18n="proj.internal">
                                         Internal Project
                                     </span>
                                     <span class="text-[9.5px] font-mono text-stone-300 pointer-events-none">🔒</span>
@@ -592,10 +592,10 @@
         <div class="relative z-10 flex flex-col sm:flex-row sm:items-end justify-between gap-1 border-b border-[#E6ECF1] pb-3">
             <div>
                 <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#1C2430] tracking-tight">
-                    Licenses &amp; <span class="font-serif italic font-normal text-[#233B53]">Achievements</span>
+                    <span data-i18n="cert.title_main">Licenses &amp;</span> <span class="font-serif italic font-normal text-[#233B53]" data-i18n="cert.title_sub">Achievements</span>
                 </h2>
             </div>
-            <p class="text-xs font-semibold text-[#233B53]">
+            <p class="text-xs font-semibold text-[#233B53]" data-i18n="cert.subtitle">
                 National and academic credentials
             </p>
         </div>
@@ -655,7 +655,7 @@
 
                         <div class="pt-2.5 mt-auto border-t border-stone-100 flex items-center justify-between gap-2 text-[10px] font-mono">
                             <span class="text-stone-400 font-semibold truncate">{{ $cert['year'] ?? 'Verified' }}</span>
-                            <span class="text-[#233B53] font-bold shrink-0 inline-flex items-center group-hover:text-[#162637] transition-colors">
+                            <span class="text-[#233B53] font-bold shrink-0 inline-flex items-center group-hover:text-[#162637] transition-colors" data-i18n="cert.view">
                                 View ↗
                             </span>
                         </div>
@@ -676,10 +676,10 @@
         <div class="relative z-10 flex flex-col sm:flex-row sm:items-end justify-between gap-1 border-b border-[#E6ECF1] pb-3">
             <div>
                 <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#1C2430] tracking-tight">
-                    Tools &amp; <span class="font-serif italic font-normal text-[#233B53]">Technologies</span>
+                    <span data-i18n="skills.title_main">Tools &amp;</span> <span class="font-serif italic font-normal text-[#233B53]" data-i18n="skills.title_sub">Technologies</span>
                 </h2>
             </div>
-            <p class="text-xs font-semibold text-[#233B53]">
+            <p class="text-xs font-semibold text-[#233B53]" data-i18n="skills.subtitle">
                 Technologies and tools I use
             </p>
         </div>
@@ -692,11 +692,11 @@
                         <div class="w-8 h-8 rounded-xl bg-[#DCEAF7] text-[#233B53] border border-[#E6ECF1] flex items-center justify-center font-bold text-sm shadow-2xs shrink-0">
                             ✦
                         </div>
-                        <h3 class="font-extrabold text-sm sm:text-base text-[#1C2430] leading-snug">
+                        <h3 class="font-extrabold text-sm sm:text-base text-[#1C2430] leading-snug" data-i18n="skills.cat_{{ $index }}.title">
                             {{ $category['category'] }}
                         </h3>
                     </div>
-                    <p class="text-xs text-stone-500 font-medium leading-relaxed mb-4 min-h-[36px]">
+                    <p class="text-xs text-stone-500 font-medium leading-relaxed mb-4 min-h-[36px]" data-i18n="skills.cat_{{ $index }}.desc">
                         {{ $category['description'] }}
                     </p>
 
@@ -726,35 +726,35 @@
 
         <!-- Soft Skills: Neat Individual Chips with Burgundy & Soft Blush Accents -->
         <div class="relative z-10 clean-card p-5 sm:p-6 rounded-2xl bg-white border border-[#E6ECF1] space-y-3">
-            <p class="text-[11px] font-mono font-extrabold text-[#233B53] uppercase tracking-wider">Soft Skills</p>
+            <p class="text-[11px] font-mono font-extrabold text-[#233B53] uppercase tracking-wider" data-i18n="skills.soft_title">Soft Skills</p>
             <div class="flex flex-wrap gap-2.5 sm:gap-3">
                 <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FAFAF7] text-[#1C2430] text-xs sm:text-sm font-bold border border-[#E6ECF1] shadow-2xs hover:border-[#233B53]/40 hover:bg-[#DCEAF7] transition-all">
                     <span class="w-1.5 h-1.5 rounded-full bg-[#233B53]"></span>
-                    Team Collaboration
+                    <span data-i18n="skills.soft_collab">Team Collaboration</span>
                 </span>
                 <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FAFAF7] text-[#1C2430] text-xs sm:text-sm font-bold border border-[#E6ECF1] shadow-2xs hover:border-[#233B53]/40 hover:bg-[#DCEAF7] transition-all">
                     <span class="w-1.5 h-1.5 rounded-full bg-[#233B53]"></span>
-                    Communication
+                    <span data-i18n="skills.soft_comm">Communication</span>
                 </span>
                 <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FAFAF7] text-[#1C2430] text-xs sm:text-sm font-bold border border-[#E6ECF1] shadow-2xs hover:border-[#233B53]/40 hover:bg-[#DCEAF7] transition-all">
                     <span class="w-1.5 h-1.5 rounded-full bg-[#233B53]"></span>
-                    Adaptability
+                    <span data-i18n="skills.soft_adapt">Adaptability</span>
                 </span>
                 <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FAFAF7] text-[#1C2430] text-xs sm:text-sm font-bold border border-[#E6ECF1] shadow-2xs hover:border-[#233B53]/40 hover:bg-[#DCEAF7] transition-all">
                     <span class="w-1.5 h-1.5 rounded-full bg-[#233B53]"></span>
-                    Problem Solving
+                    <span data-i18n="skills.soft_prob">Problem Solving</span>
                 </span>
                 <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FAFAF7] text-[#1C2430] text-xs sm:text-sm font-bold border border-[#E6ECF1] shadow-2xs hover:border-[#233B53]/40 hover:bg-[#DCEAF7] transition-all">
                     <span class="w-1.5 h-1.5 rounded-full bg-[#233B53]"></span>
-                    Project &amp; Time Management
+                    <span data-i18n="skills.soft_time">Project &amp; Time Management</span>
                 </span>
                 <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FAFAF7] text-[#1C2430] text-xs sm:text-sm font-bold border border-[#E6ECF1] shadow-2xs hover:border-[#233B53]/40 hover:bg-[#DCEAF7] transition-all">
                     <span class="w-1.5 h-1.5 rounded-full bg-[#233B53]"></span>
-                    Critical Thinking
+                    <span data-i18n="skills.soft_crit">Critical Thinking</span>
                 </span>
                 <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FAFAF7] text-[#1C2430] text-xs sm:text-sm font-bold border border-[#E6ECF1] shadow-2xs hover:border-[#233B53]/40 hover:bg-[#DCEAF7] transition-all">
                     <span class="w-1.5 h-1.5 rounded-full bg-[#233B53]"></span>
-                    Attention to Detail
+                    <span data-i18n="skills.soft_detail">Attention to Detail</span>
                 </span>
             </div>
         </div>
@@ -770,10 +770,10 @@
         <div class="relative z-10 flex flex-col sm:flex-row sm:items-end justify-between gap-1 border-b border-[#E6ECF1] pb-3">
             <div>
                 <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#1C2430] tracking-tight">
-                    Let's Connect &amp; <span class="font-serif italic font-normal text-[#233B53]">build together.</span>
+                    <span data-i18n="contact.title_main">Let's Connect &amp;</span> <span class="font-serif italic font-normal text-[#233B53]" data-i18n="contact.title_sub">build together.</span>
                 </h2>
             </div>
-            <p class="text-xs font-semibold text-[#233B53]">
+            <p class="text-xs font-semibold text-[#233B53]" data-i18n="contact.subtitle">
                 Fast response via Email &amp; WhatsApp
             </p>
         </div>
@@ -795,13 +795,13 @@
                 </div>
 
                 <div class="space-y-1">
-                    <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#233B53]">Professional Network</span>
+                    <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#233B53]" data-i18n="contact.linkedin_tag">Professional Network</span>
                     <h3 class="text-base font-extrabold text-[#1C2430] leading-snug">LinkedIn</h3>
-                    <p class="text-xs text-stone-500 font-medium truncate pt-0.5">www.linkedin.com/in/tiaraaptr</p>
+                    <p class="text-xs text-stone-500 font-medium truncate pt-0.5">tiaraaptr</p>
                 </div>
 
                 <div class="pt-3 border-t border-[#E6ECF1] flex items-center justify-between text-xs font-bold text-[#233B53]">
-                    <span>Connect on LinkedIn</span>
+                    <span data-i18n="contact.linkedin_action">Connect on LinkedIn</span>
                     <span class="text-xs group-hover:translate-x-1 transition-transform">→</span>
                 </div>
             </a>
@@ -822,13 +822,13 @@
                 </div>
 
                 <div class="space-y-1">
-                    <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#233B53]">Social &amp; Visuals</span>
+                    <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#233B53]" data-i18n="contact.insta_tag">Social &amp; Visuals</span>
                     <h3 class="text-base font-extrabold text-[#1C2430] leading-snug">Instagram</h3>
                     <p class="text-xs text-stone-500 font-medium truncate pt-0.5">@tir.aptr_</p>
                 </div>
 
                 <div class="pt-3 border-t border-[#E6ECF1] flex items-center justify-between text-xs font-bold text-[#233B53]">
-                    <span>Follow on Instagram</span>
+                    <span data-i18n="contact.insta_action">Follow on Instagram</span>
                     <span class="text-xs group-hover:translate-x-1 transition-transform">→</span>
                 </div>
             </a>
@@ -849,44 +849,89 @@
                 </div>
 
                 <div class="space-y-1">
-                    <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#233B53]">Direct Messaging</span>
+                    <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#233B53]" data-i18n="contact.wa_tag">Direct Messaging</span>
                     <h3 class="text-base font-extrabold text-[#1C2430] leading-snug">WhatsApp</h3>
-                    <p class="text-xs text-stone-500 font-medium truncate pt-0.5">+62 856-9126-5744</p>
                 </div>
 
                 <div class="pt-3 border-t border-[#E6ECF1] flex items-center justify-between text-xs font-bold text-[#233B53]">
-                    <span>Chat on WhatsApp</span>
+                    <span data-i18n="contact.wa_action">Chat on WhatsApp</span>
                     <span class="text-xs group-hover:translate-x-1 transition-transform">→</span>
                 </div>
             </a>
 
-            <!-- 4. Email -->
-            <a href="mailto:tiaraariyantoputrii@gmail.com" class="group clean-card p-6 rounded-3xl bg-white border border-[#E6ECF1] flex flex-col justify-between space-y-5 hover:border-[#233B53]/40 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+            <!-- 4. Email (Interactive Card with Copy Email Action) -->
+            <div class="group clean-card p-6 rounded-3xl bg-white border border-[#E6ECF1] flex flex-col justify-between space-y-5 hover:border-[#233B53]/40 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                 <div class="flex items-center justify-between">
-                    <div class="w-12 h-12 rounded-2xl bg-[#FAFAF7] border border-[#E6ECF1] flex items-center justify-center transition-colors group-hover:scale-105 duration-300 shadow-2xs">
+                    <a href="mailto:tiaraariyantoputrii@gmail.com" class="w-12 h-12 rounded-2xl bg-[#FAFAF7] border border-[#E6ECF1] flex items-center justify-center transition-colors group-hover:scale-105 duration-300 shadow-2xs" aria-label="Send email">
                         <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#233B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect width="20" height="16" x="2" y="4" rx="2"/>
                             <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
                         </svg>
-                    </div>
-                    <div class="w-8 h-8 rounded-full bg-[#FAFAF7] border border-[#E6ECF1] group-hover:bg-[#233B53] group-hover:text-white group-hover:border-[#233B53] text-stone-400 flex items-center justify-center transition-all duration-300 shadow-2xs">
-                        <svg class="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7V17"/>
+                    </a>
+                    <!-- Copy Email Quick Action Button -->
+                    <button 
+                        type="button" 
+                        id="copy-email-btn"
+                        data-email="tiaraariyantoputrii@gmail.com"
+                        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#FAFAF7] hover:bg-[#DCEAF7] border border-[#E6ECF1] hover:border-[#233B53]/40 text-[#233B53] text-[11px] font-bold font-mono transition-all shadow-2xs cursor-pointer active:scale-95"
+                        aria-label="Copy email address"
+                    >
+                        <svg id="copy-email-icon" class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
                         </svg>
-                    </div>
+                        <span id="copy-email-text" data-i18n="contact.copy_email">Copy Email</span>
+                    </button>
                 </div>
 
                 <div class="space-y-1">
-                    <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#233B53]">Official Inquiry</span>
+                    <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#233B53]" data-i18n="contact.email_tag">Official Inquiry</span>
                     <h3 class="text-base font-extrabold text-[#1C2430] leading-snug">Email</h3>
-                    <p class="text-xs text-stone-500 font-medium truncate pt-0.5">tiaraariyantoputrii@gmail.com</p>
+                    <p class="text-xs text-stone-600 font-medium truncate pt-0.5 select-all" id="displayed-email-text">tiaraariyantoputrii@gmail.com</p>
                 </div>
 
                 <div class="pt-3 border-t border-[#E6ECF1] flex items-center justify-between text-xs font-bold text-[#233B53]">
-                    <span>Send an Email</span>
-                    <span class="text-xs group-hover:translate-x-1 transition-transform">→</span>
+                    <a href="mailto:tiaraariyantoputrii@gmail.com" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#233B53] hover:text-[#162637] transition-colors">
+                        <span data-i18n="contact.email_action">Send an Email</span>
+                        <span class="text-xs group-hover:translate-x-1 transition-transform">→</span>
+                    </a>
                 </div>
-            </a>
+            </div>
+        </div>
+
+        <!-- Location & Availability Wide Banner Card -->
+        <div class="clean-card p-5 sm:p-6 lg:p-7 rounded-3xl bg-white border border-[#E6ECF1] shadow-xs hover:border-[#233B53]/40 transition-all duration-300 w-full">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6">
+                <!-- Left: Location Details -->
+                <div class="flex items-center gap-3.5 sm:gap-4 min-w-0">
+                    <div class="w-12 h-12 rounded-2xl bg-[#DCEAF7] border border-[#E6ECF1] flex items-center justify-center text-[#233B53] shrink-0 shadow-2xs">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </div>
+                    <div class="min-w-0 space-y-0.5">
+                        <span class="text-[10.5px] font-mono font-bold uppercase tracking-wider text-[#233B53] block" data-i18n="contact.location_title">
+                            Location &amp; Availability
+                        </span>
+                        <h4 class="text-sm sm:text-base font-extrabold text-[#1C2430] leading-snug truncate" data-i18n="contact.location_value">
+                            Bogor / Depok / Jakarta, Indonesia
+                        </h4>
+                    </div>
+                </div>
+
+                <!-- Right: Active Status Indicator Badge -->
+                <div class="flex items-center md:justify-end shrink-0">
+                    <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#FAFAF7] border border-[#E6ECF1] shadow-2xs">
+                        <span class="relative flex h-2.5 w-2.5 shrink-0">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                        </span>
+                        <span class="text-xs sm:text-[13px] font-bold text-[#1C2430] tracking-tight whitespace-nowrap" data-i18n="contact.availability_status">
+                            Available for Full-Time / Projects
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -912,7 +957,7 @@
 
                 <div class="flex items-center gap-2 shrink-0">
                     <a id="cert-modal-download" href="#" target="_blank" rel="noopener" class="px-3 py-1.5 rounded-full bg-white border border-[#E6ECF1] hover:bg-[#DCEAF7] hover:border-[#233B53]/40 text-[#233B53] text-xs font-bold transition-all flex items-center gap-1.5 shadow-2xs">
-                        <span>Open Original</span>
+                        <span data-i18n="cert.modal_open">Open Original</span>
                         <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                         </svg>
