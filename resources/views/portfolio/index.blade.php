@@ -27,14 +27,11 @@
                         <span data-i18n="hero.greeting">Hello, I'm</span>
                         <span class="font-serif italic font-normal text-[#233B53] tracking-normal">Tiara.</span>
                     </h1>
-                    <div class="text-lg sm:text-xl lg:text-2xl font-bold text-stone-700 tracking-tight pt-0.5" data-i18n="hero.role">
-                        Software Engineer
-                    </div>
                 </div>
 
                 <!-- Professional Bio Statement -->
                 <p class="text-xs sm:text-sm text-stone-600 leading-relaxed font-normal max-w-xl" data-i18n="hero.bio">
-                    Software Engineering graduate from IPB University specializing in web development, UI/UX design, and software testing. Experienced in building responsive web applications with Laravel, designing intuitive user experiences with Figma, and ensuring quality through rigorous manual &amp; black box testing.
+                    Software Engineering graduate from IPB University specializing in Full-Stack Web Development, UI/UX Design, and Manual Software Testing. Experienced in developing responsive web applications, analyzing system requirements, designing user-friendly interfaces, and conducting functional and usability testing to ensure software quality.
                 </p>
 
                 <!-- Actions: CTA Button Only -->
@@ -74,7 +71,6 @@
 
                             <!-- Name Badge Inside the Photo Canvas at Top-Left (Directly below location badge with neat, minimal gap) -->
                             <div class="absolute top-1.5 left-1.5 z-10 px-3 py-0.5 sm:py-1 rounded-full bg-white/95 backdrop-blur-md text-[#1C2430] border border-[#E6ECF1] text-[9.5px] sm:text-[10px] font-bold tracking-tight shadow-sm flex items-center gap-1.5 whitespace-nowrap">
-                                <span class="w-1.5 h-1.5 rounded-full bg-[#233B53] shrink-0"></span>
                                 <span>Tiara Ariyanto Putri</span>
                             </div>
                         </div>
@@ -195,40 +191,31 @@
                                 <div class="space-y-2 text-xs sm:text-[13px] text-stone-600 leading-relaxed">
                                     <div class="flex items-start gap-2">
                                         <span class="text-[#233B53] font-bold mt-0.5 shrink-0">✦</span>
-                                        <span><strong class="text-[#1C2430]" data-i18n="edu.scope_web_title">Web Development &amp; Architecture:</strong> <span data-i18n="edu.scope_web_desc">Full-stack web application development with Laravel, PHP, relational MySQL schemas, and responsive UI.</span></span>
+                                        <span><strong class="text-[#1C2430]" data-i18n="edu.scope_focus_title">Core Focus:</strong> <span data-i18n="edu.scope_focus_desc">Full-Stack Web Development, UI/UX Design, Software Testing, and System Analysis &amp; Design.</span></span>
                                     </div>
                                     <div class="flex items-start gap-2">
                                         <span class="text-[#233B53] font-bold mt-0.5 shrink-0">✦</span>
-                                        <span><strong class="text-[#1C2430]" data-i18n="edu.scope_uiux_title">UI/UX Design &amp; Prototyping:</strong> <span data-i18n="edu.scope_uiux_desc">User research, workflow diagramming with Draw.io, design systems, and interactive prototypes in Figma.</span></span>
+                                        <span><strong class="text-[#1C2430]" data-i18n="edu.scope_sdlc_title">SDLC Experience:</strong> <span data-i18n="edu.scope_sdlc_desc">Applied Software Development Life Cycle (SDLC) methodologies across team-based software development projects.</span></span>
                                     </div>
                                     <div class="flex items-start gap-2">
                                         <span class="text-[#233B53] font-bold mt-0.5 shrink-0">✦</span>
-                                        <span><strong class="text-[#1C2430]" data-i18n="edu.scope_sdlc_title">SDLC &amp; Software Testing:</strong> <span data-i18n="edu.scope_sdlc_desc">End-to-end SDLC using Prototyping methodology, structured system analysis, and comprehensive Black Box &amp; usability testing.</span></span>
+                                        <span><strong class="text-[#1C2430]" data-i18n="edu.scope_capstone_title">Final Capstone Project:</strong> <span data-i18n="edu.scope_capstone_desc">Development and Evaluation of an Education and Training Module on the Internal Website of the Depok City Government.</span></span>
                                     </div>
                                     <div class="flex items-start gap-2">
                                         <span class="text-[#233B53] font-bold mt-0.5 shrink-0">✦</span>
-                                        <span><strong class="text-[#1C2430]" data-i18n="edu.scope_capstone_title">Capstone Project:</strong> <span data-i18n="edu.scope_capstone_desc">Development and Evaluation of an Education and Training Module on the Internal Website of the Depok City Government.</span></span>
+                                        <span><strong class="text-[#1C2430]" data-i18n="edu.scope_cert_title">Professional Certification:</strong> <span data-i18n="edu.scope_cert_desc">Certified Software Engineer by BNSP (Badan Nasional Sertifikasi Profesi).</span></span>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Relevant Credentials & Technology Tags -->
-                            <div class="pt-3 border-t border-[#E6ECF1] space-y-2">
-                                <div class="flex items-center justify-between text-[11px]">
-                                    <span class="font-bold text-[#1C2430] flex items-center gap-1.5">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-[#233B53]"></span>
-                                        <span data-i18n="edu.bnsp_cert">BNSP Certified Software Engineer</span>
-                                    </span>
-                                    <span class="text-[10px] font-mono text-stone-400">LSP Vokasi IPB (2026–2029)</span>
-                                </div>
-
-                                <div class="flex flex-wrap gap-1.5 pt-1">
+                            <div class="pt-3 border-t border-[#E6ECF1]">
+                                <div class="flex flex-wrap gap-1.5">
                                     <span class="px-2.5 py-0.5 rounded-md text-[10px] font-bold font-mono bg-[#DCEAF7] text-[#233B53] border border-[#E6ECF1]">Laravel</span>
                                     <span class="px-2.5 py-0.5 rounded-md text-[10px] font-bold font-mono bg-[#FAFAF7] text-stone-700 border border-[#E6ECF1]">MySQL</span>
                                     <span class="px-2.5 py-0.5 rounded-md text-[10px] font-bold font-mono bg-[#FAFAF7] text-stone-700 border border-[#E6ECF1]">Figma</span>
                                     <span class="px-2.5 py-0.5 rounded-md text-[10px] font-bold font-mono bg-[#FAFAF7] text-stone-700 border border-[#E6ECF1]">Draw.io</span>
                                     <span class="px-2.5 py-0.5 rounded-md text-[10px] font-bold font-mono bg-[#FAFAF7] text-stone-700 border border-[#E6ECF1]">Black Box QA</span>
-                                    <span class="px-2.5 py-0.5 rounded-md text-[10px] font-bold font-mono bg-[#DCEAF7] text-[#233B53] border border-[#E6ECF1]">Prototyping SDLC</span>
                                 </div>
                             </div>
 
@@ -254,7 +241,7 @@
                 </h2>
             </div>
             <p class="text-xs font-semibold text-[#233B53]" data-i18n="org.subtitle">
-                Active committee &amp; team contribution
+                Active involvement in campus events and teamwork
             </p>
         </div>
 
@@ -292,7 +279,7 @@
                                     Committee &amp; Events
                                 </span>
                                 <span class="text-[10px] font-medium text-stone-500 px-2 py-0.5 rounded-md bg-[#FAFAF7] border border-[#E6ECF1]" data-i18n="org.badge_scope">
-                                    Campus Annual Event
+                                    Annual Campus Event
                                 </span>
                             </div>
 
@@ -310,15 +297,15 @@
                             <div class="space-y-1 pt-0.5 border-t border-[#E6ECF1]">
                                 <div class="flex items-start gap-1.5 text-xs text-stone-600 leading-normal">
                                     <span class="text-[#233B53] font-bold mt-0.5 shrink-0 text-[10px]">✦</span>
-                                    <span data-i18n="org.bullet_1">Designed promotional Instagram posts and story updates.</span>
+                                    <span data-i18n="org.bullet_1">Designed promotional content for Instagram posts and stories.</span>
                                 </div>
                                 <div class="flex items-start gap-1.5 text-xs text-stone-600 leading-normal">
                                     <span class="text-[#233B53] font-bold mt-0.5 shrink-0 text-[10px]">✦</span>
-                                    <span data-i18n="org.bullet_2">Designed official event merchandise including T-shirts, lanyards, and staff ID cards.</span>
+                                    <span data-i18n="org.bullet_2">Designed event merchandise, including jerseys, lanyards, and staff ID cards.</span>
                                 </div>
                                 <div class="flex items-start gap-1.5 text-xs text-stone-600 leading-normal">
                                     <span class="text-[#233B53] font-bold mt-0.5 shrink-0 text-[10px]">✦</span>
-                                    <span data-i18n="org.bullet_3">Created visual stage concepts, backdrops, and event hall decorations.</span>
+                                    <span data-i18n="org.bullet_3">Designed and installed stage decorations for the event.</span>
                                 </div>
                             </div>
 
@@ -327,7 +314,7 @@
                                 <span class="text-[10px] font-mono font-bold text-stone-400 mr-1" data-i18n="org.deliverables_label">Deliverables:</span>
                                 <span class="px-2 py-0.5 rounded-md text-[9px] font-bold font-mono bg-[#DCEAF7] text-[#233B53] border border-[#E6ECF1]">Canva</span>
                                 <span class="px-2 py-0.5 rounded-md text-[9px] font-bold font-mono bg-white text-[#1C2430] border border-[#E6ECF1]" data-i18n="org.deliv_merch">Merchandise Design</span>
-                                <span class="px-2 py-0.5 rounded-md text-[9px] font-bold font-mono bg-[#DCEAF7] text-[#233B53] border border-[#E6ECF1]" data-i18n="org.deliv_stage">Stage Setup</span>
+                                <span class="px-2 py-0.5 rounded-md text-[9px] font-bold font-mono bg-[#DCEAF7] text-[#233B53] border border-[#E6ECF1]" data-i18n="org.deliv_stage">Stage Decoration &amp; Setup</span>
                                 <span class="px-2 py-0.5 rounded-md text-[9px] font-bold font-mono bg-white text-[#1C2430] border border-[#E6ECF1]" data-i18n="org.deliv_collab">Team Collaboration</span>
                             </div>
                         </div>
@@ -365,10 +352,10 @@
         <div class="relative z-10 w-full">
             <div id="exp-scroll-container" class="netflix-scroll flex items-stretch gap-4 sm:gap-5 overflow-x-auto pb-4 pt-1 snap-x snap-mandatory cursor-grab active:cursor-grabbing select-none">
                 @foreach($portfolio['experiences'] as $index => $exp)
-                    <div class="snap-start flex-shrink-0 w-[min(340px,88vw)] sm:w-[365px] clean-card p-5 sm:p-6 rounded-3xl bg-white border border-[#E6ECF1] hover:border-[#233B53]/40 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+                    <div class="snap-start flex-shrink-0 w-[min(340px,88vw)] sm:w-[370px] clean-card p-5 sm:p-6 rounded-3xl bg-white border border-[#E6ECF1] hover:border-[#233B53]/40 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between">
                         
                         <div class="space-y-3.5 flex-1 flex flex-col">
-                            <!-- Card Top Header: Logo + Date Badge Row -->
+                            <!-- 1. First row: Logo on the left, date badge on the right -->
                             <div class="flex items-center justify-between gap-2.5">
                                 <!-- Organization Official Logo -->
                                 <div class="w-11 h-11 rounded-2xl bg-[#FAFAF7] border border-[#E6ECF1] flex items-center justify-center shrink-0 shadow-2xs overflow-hidden p-1.5">
@@ -385,15 +372,15 @@
                                     @endif
                                 </div>
 
-                                <!-- Burgundy Date Badge (Top-Right, No Overlap) -->
+                                <!-- Date Badge on the Right -->
                                 <div class="shrink-0">
-                                    <span class="font-mono font-bold px-3 py-1 rounded-full bg-[#DCEAF7] text-[#233B53] border border-[#E6ECF1] whitespace-nowrap text-[10.5px] sm:text-[11px] shadow-2xs inline-block">
+                                    <span class="font-mono font-bold px-2.5 py-0.5 rounded-full bg-[#DCEAF7] text-[#233B53] border border-[#E6ECF1] whitespace-nowrap text-[9.5px] sm:text-[10px] shadow-2xs inline-block">
                                         {{ $exp['period'] }}
                                     </span>
                                 </div>
                             </div>
 
-                            <!-- Role Title & Organization (No Truncation / Ellipsis, Full Natural Wrapping) -->
+                            <!-- 2. Below logo: Full job title & 3. Below job title: Institution name -->
                             <div class="space-y-1">
                                 <h3 class="text-sm sm:text-base font-extrabold text-[#1C2430] leading-snug" data-i18n="exp.{{ $index }}.role">
                                     {{ $exp['role'] }}
@@ -401,14 +388,10 @@
                                 <div class="text-xs sm:text-[13px] font-bold text-[#233B53] leading-snug" data-i18n="exp.{{ $index }}.company">
                                     {{ $exp['company'] }}
                                 </div>
-                                <div class="text-[11px] text-stone-500 font-medium flex items-center gap-1 pt-0.5">
-                                    <span>📍</span>
-                                    <span data-i18n="exp.{{ $index }}.location">{{ $exp['location'] }}</span>
-                                </div>
                             </div>
 
-                            <!-- Thin Divider below Header -->
-                            <div class="border-t border-[#E6ECF1] pt-1"></div>
+                            <!-- Divider directly below institution name, followed by descriptions and skills -->
+                            <div class="border-t border-[#E6ECF1]"></div>
 
                             <!-- Job Descriptions with Burgundy Outlined Check Icons -->
                             <div class="space-y-2 flex-1">
@@ -515,14 +498,21 @@
                         <!-- Bottom Content Section -->
                         <div class="p-3 sm:p-3.5 flex-1 flex flex-col justify-between bg-white">
                             <div class="flex flex-col">
-                                <!-- Project Title: Bold uppercase, wrapped naturally -->
+                                <!-- 1. Project Title: Bold uppercase, wrapped naturally -->
                                 <div>
                                     <h3 class="text-xs sm:text-[13px] font-black text-[#1C2430] tracking-tight leading-snug uppercase" data-i18n="proj.{{ $index }}.title">
                                         {{ $project['title'] }}
                                     </h3>
                                 </div>
 
-                                <!-- Technology Tags: Exactly 8-10px gap from title (mt-2.5 = 10px) -->
+                                <!-- 2. Project Description -->
+                                <div class="mt-2.5">
+                                    <p class="text-[10.5px] text-stone-600 leading-relaxed font-normal" data-i18n="proj.{{ $index }}.desc">
+                                        {{ $project['description'] }}
+                                    </p>
+                                </div>
+
+                                <!-- 3. Tech Stack Tags -->
                                 <div class="mt-2.5 flex flex-wrap gap-1">
                                     @foreach(array_slice($tags, 0, 4) as $tag)
                                         <span class="px-2 py-0.5 rounded-md text-[8.5px] font-bold font-mono border bg-[#DCEAF7] text-[#233B53] border-[#E6ECF1] shadow-2xs">
@@ -530,37 +520,34 @@
                                         </span>
                                     @endforeach
                                 </div>
-
-                                <!-- Project Description (Compact container with natural line height) -->
-                                <div class="mt-2.5">
-                                    <p class="text-[10.5px] text-stone-600 leading-relaxed font-normal" data-i18n="proj.{{ $index }}.desc">
-                                        {{ $project['description'] }}
-                                    </p>
-                                </div>
                             </div>
 
-                            <!-- Footer: Aligned neatly at the bottom -->
+                            <!-- 4. Footer: Aligned neatly at the bottom with View Details & Rounded-square Arrow Button -->
                             <div class="pt-2 mt-3 border-t border-[#E6ECF1] flex items-center justify-between text-xs min-h-[1.75rem]">
-                                @if($hasUrl)
-                                    <a 
-                                        href="{{ $project['url'] }}" 
-                                        target="_blank" 
-                                        rel="noopener noreferrer" 
-                                        class="inline-flex items-center gap-1 font-bold text-[#233B53] hover:text-[#162637] transition-colors text-[10.5px] group/link py-0.5"
+                                <span class="inline-flex items-center gap-1 font-bold text-[#233B53] text-[10.5px]">
+                                    <span data-i18n="proj.view_details">View Details</span>
+                                </span>
+
+                                <!-- Rounded-square Arrow Button (↗) with Tooltip & Hover Animation -->
+                                <div class="relative group/btn flex items-center">
+                                    <button 
+                                        type="button" 
+                                        data-project-open-btn="{{ $index }}"
+                                        class="w-7 h-7 rounded-lg bg-[#FAFAF7] hover:bg-[#233B53] text-[#233B53] hover:text-white border border-[#E6ECF1] hover:border-[#233B53] flex items-center justify-center transition-all duration-200 shadow-2xs hover:shadow-xs group-hover/btn:scale-105 active:scale-95 cursor-pointer"
+                                        aria-label="View Details"
                                     >
-                                        <span data-i18n="proj.view">View Project</span>
-                                        <svg class="w-3 h-3 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                        <svg class="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                                         </svg>
-                                    </a>
-                                    <!-- Subtle External Link Icon on Right -->
-                                    <span class="text-stone-300 text-xs pointer-events-none">↗</span>
-                                @else
-                                    <span class="text-[9.5px] font-mono text-stone-400 font-semibold italic" data-i18n="proj.internal">
-                                        Internal Project
-                                    </span>
-                                    <span class="text-[9.5px] font-mono text-stone-300 pointer-events-none">🔒</span>
-                                @endif
+                                    </button>
+
+                                    <!-- Subtle Hover Tooltip (Hidden on touch/mobile by default, smoothly animated on hover) -->
+                                    <div class="hidden sm:block absolute bottom-full right-0 mb-1.5 opacity-0 group-hover/btn:opacity-100 group-hover/btn:-translate-y-0.5 pointer-events-none transition-all duration-200 z-20">
+                                        <div class="px-2 py-0.5 rounded-md bg-[#1C2430] text-white text-[9.5px] font-mono font-medium shadow-md whitespace-nowrap">
+                                            <span data-i18n="proj.view_details">View Details</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -579,6 +566,31 @@
                 ></button>
             @endforeach
         </div>
+
+        {{-- Embedded Project Details JSON for Accessible Modal Rendering --}}
+        <script id="portfolio-projects-data" type="application/json">
+            {!! json_encode(array_map(function($proj, $idx) {
+                return [
+                    'index' => $idx,
+                    'id' => $proj['id'] ?? '',
+                    'title' => $proj['title'] ?? '',
+                    'category' => $proj['category'] ?? '',
+                    'period' => $proj['period'] ?? '',
+                    'technology' => $proj['technology'] ?? ($proj['tags'] ?? []),
+                    'description' => $proj['description'] ?? '',
+                    'url' => $proj['url'] ?? null,
+                    'documentation_url' => !empty($proj['documentation_url']) ? asset(ltrim($proj['documentation_url'], '/')) : null,
+                    'document_url' => !empty($proj['document_url']) ? asset(ltrim($proj['document_url'], '/')) : null,
+                    'srs_url' => !empty($proj['srs_url']) ? asset(ltrim($proj['srs_url'], '/')) : null,
+                    'contributions' => $proj['contributions'] ?? null,
+                    'image' => !empty($proj['image']) ? asset('images/projects/' . $proj['image']) : null,
+                    'images' => !empty($proj['images']) 
+                        ? array_map(fn($img) => asset('images/projects/' . $img), $proj['images']) 
+                        : (!empty($proj['image']) ? [asset('images/projects/' . $proj['image'])] : []),
+                    'image_position' => $proj['image_position'] ?? 'center top'
+                ];
+            }, $portfolio['projects'], array_keys($portfolio['projects'])), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+        </script>
     </section>
 
     <!-- ========================================== -->
@@ -939,16 +951,16 @@
     <!-- CERTIFICATE PREVIEW MODAL -->
     <!-- ========================================== -->
     <div id="cert-modal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 opacity-0 pointer-events-none transition-opacity duration-300" role="dialog" aria-modal="true" aria-labelledby="cert-modal-title">
-        <!-- Backdrop -->
-        <div id="cert-modal-backdrop" class="absolute inset-0 bg-stone-900/60 backdrop-blur-sm transition-opacity"></div>
+        <!-- Backdrop: fixed inset-0 covering the entire viewport without gaps -->
+        <div id="cert-modal-backdrop" class="fixed inset-0 bg-stone-900/60 backdrop-blur-sm transition-opacity"></div>
 
-        <!-- Modal Dialog Box -->
-        <div class="relative w-full max-w-3xl max-h-[92vh] bg-white rounded-3xl border border-[#E6ECF1] shadow-2xl overflow-hidden flex flex-col z-10 scale-95 transition-transform duration-300" id="cert-modal-card">
+        <!-- Modal Dialog Box: Fit certificate content, max-w-[90vw], max-h-[85dvh] -->
+        <div class="relative w-auto max-w-[90vw] max-h-[85dvh] bg-white rounded-3xl border border-[#E6ECF1] shadow-2xl overflow-hidden flex flex-col z-10 scale-95 transition-transform duration-300 m-auto" id="cert-modal-card">
             
-            <!-- Modal Header -->
-            <div class="px-5 py-3.5 sm:py-4 border-b border-[#E6ECF1] bg-gradient-to-r from-[#DCEAF7] via-white to-[#FAFAF7] flex items-center justify-between gap-3">
-                <div class="min-w-0">
-                    <div class="mb-1">
+            <!-- Modal Header: Fixed at top of modal -->
+            <div id="cert-modal-header" class="px-5 py-3 sm:py-3.5 border-b border-[#E6ECF1] bg-gradient-to-r from-[#DCEAF7] via-white to-[#FAFAF7] flex items-center justify-between gap-4 shrink-0">
+                <div class="min-w-0 flex-1">
+                    <div class="mb-0.5">
                         <span id="cert-modal-badge" class="px-2.5 py-0.5 rounded-full bg-white border border-[#E6ECF1] text-[9.5px] font-mono font-bold text-[#233B53] shadow-2xs"></span>
                     </div>
                     <h3 id="cert-modal-title" class="text-sm sm:text-base font-extrabold text-[#1C2430] truncate"></h3>
@@ -956,8 +968,8 @@
                 </div>
 
                 <div class="flex items-center gap-2 shrink-0">
-                    <a id="cert-modal-download" href="#" target="_blank" rel="noopener" class="px-3 py-1.5 rounded-full bg-white border border-[#E6ECF1] hover:bg-[#DCEAF7] hover:border-[#233B53]/40 text-[#233B53] text-xs font-bold transition-all flex items-center gap-1.5 shadow-2xs">
-                        <span data-i18n="cert.modal_open">Open Original</span>
+                    <a id="cert-modal-download" href="#" target="_blank" rel="noopener" class="px-3.5 py-1.5 rounded-full bg-white border border-[#E6ECF1] hover:bg-[#DCEAF7] hover:border-[#233B53]/40 text-[#233B53] text-xs font-bold transition-all flex items-center gap-1.5 shadow-2xs">
+                        <span id="cert-modal-download-text">Open PDF</span>
                         <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                         </svg>
@@ -970,10 +982,127 @@
                 </div>
             </div>
 
-            <!-- Modal Content Preview Area -->
-            <div class="p-3 sm:p-5 flex-1 overflow-auto bg-[#FAFAF7] flex items-center justify-center min-h-[300px]">
-                <img id="cert-modal-img" src="" alt="Certificate Preview" class="max-w-full max-h-[70vh] object-contain rounded-xl shadow-sm border border-[#E6ECF1] bg-white">
+            <!-- Modal Content Preview Area: Scaled to fit completely without cropping or empty excess -->
+            <div id="cert-modal-body" class="p-3 sm:p-4 md:p-5 flex-1 min-h-0 bg-[#FAFAF7] flex items-center justify-center overflow-hidden overscroll-contain">
+                <img id="cert-modal-img" src="" alt="Certificate Preview" class="max-w-full max-h-[calc(85dvh-5.5rem)] w-auto h-auto object-contain rounded-xl shadow-sm border border-[#E6ECF1] bg-white block">
             </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- PROJECT DETAIL POPUP MODAL -->
+    <!-- ========================================== -->
+    <div id="project-modal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 opacity-0 pointer-events-none transition-opacity duration-300" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+        <!-- Backdrop -->
+        <div id="project-modal-backdrop" class="absolute inset-0 bg-stone-900/60 backdrop-blur-sm transition-opacity"></div>
+
+        <!-- Modal Card Container -->
+        <div class="relative w-full max-w-2xl max-h-[90vh] bg-white rounded-3xl border border-[#E6ECF1] shadow-2xl overflow-hidden flex flex-col z-10 scale-95 transition-transform duration-300" id="project-modal-card">
+            
+            <!-- Sticky Header: Only 1 Project Category Badge & Close Button -->
+            <div class="px-5 py-3.5 border-b border-[#E6ECF1] bg-white/95 backdrop-blur-md flex items-center justify-between gap-3 shrink-0">
+                <div class="flex items-center">
+                    <span id="project-modal-category" class="px-2.5 py-0.5 rounded-full font-mono text-[10px] font-extrabold uppercase bg-[#DCEAF7] text-[#233B53] border border-[#E6ECF1]">
+                        Category
+                    </span>
+                </div>
+                <button type="button" onclick="closeProjectModal()" class="w-8 h-8 rounded-full bg-[#FAFAF7] hover:bg-[#DCEAF7] border border-[#E6ECF1] text-[#1C2430] hover:text-[#233B53] flex items-center justify-center transition-colors shadow-2xs cursor-pointer" aria-label="Close modal">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Scrollable Content Body with strict overscroll containment -->
+            <div id="project-modal-body" class="p-5 sm:p-6 overflow-y-auto space-y-6 flex-1 overscroll-contain" style="overscroll-behavior: contain;">
+                
+                <!-- 1. Project Image Container with Multi-image Navigation Controls -->
+                <div class="relative w-full aspect-16/9 rounded-2xl overflow-hidden border border-[#E6ECF1] bg-[#FAFAF7] flex items-center justify-center shadow-inner group">
+                    <img id="project-modal-image" src="" alt="Project Image" class="w-full h-full object-cover object-top transition-transform duration-300">
+                    <div id="project-modal-image-fallback" class="hidden flex-col items-center justify-center gap-2 p-4 text-center">
+                        <div class="w-10 h-10 rounded-xl bg-white border border-[#E6ECF1] flex items-center justify-center text-[#233B53] shadow-2xs">
+                            <svg class="w-5 h-5 opacity-75" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <span class="text-[10px] font-mono font-bold text-[#233B53]/75 uppercase" data-i18n="proj.preview">Project Preview</span>
+                    </div>
+
+                    <!-- Multi-image Navigation Controls (hidden if only 1 image) -->
+                    <div id="project-modal-img-controls" class="hidden">
+                        <button type="button" id="project-modal-img-prev" class="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 hover:bg-white text-[#233B53] border border-[#E6ECF1] shadow-md flex items-center justify-center transition-all cursor-pointer">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" /></svg>
+                        </button>
+                        <button type="button" id="project-modal-img-next" class="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 hover:bg-white text-[#233B53] border border-[#E6ECF1] shadow-md flex items-center justify-center transition-all cursor-pointer">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" /></svg>
+                        </button>
+                        <div id="project-modal-img-counter" class="absolute bottom-2.5 right-3 px-2 py-0.5 rounded-full bg-black/60 text-white font-mono text-[9px] backdrop-blur-xs font-semibold"></div>
+                    </div>
+                </div>
+
+                <!-- 2. Project Assets & Repositories (Directly below Image, above Title) -->
+                <div id="project-modal-assets-section" class="space-y-2">
+                    <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-stone-400 block" data-i18n="proj.modal_assets_title">
+                        Project Assets &amp; Repositories
+                    </span>
+                    <div id="project-modal-links" class="flex flex-wrap gap-2"></div>
+                </div>
+
+                <!-- 3. Project Title & 2. Project Period -->
+                <div class="space-y-1.5">
+                    <h3 id="project-modal-title" class="text-xl sm:text-2xl font-black text-[#1C2430] tracking-tight leading-snug"></h3>
+                    <!-- Project Period: subtle compact style -->
+                    <div id="project-modal-period-wrapper" class="flex items-center gap-1.5 text-xs text-stone-500 font-mono font-medium">
+                        <svg class="w-3.5 h-3.5 text-[#233B53]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <span id="project-modal-period"></span>
+                    </div>
+                </div>
+
+                <!-- 4. Project Overview -->
+                <div class="space-y-2">
+                    <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-stone-400 block" data-i18n="proj.modal_overview_title">
+                        Project Overview
+                    </span>
+                    <p id="project-modal-overview" class="text-xs sm:text-[13px] text-stone-600 leading-relaxed font-normal"></p>
+                </div>
+
+                <!-- 5. My Contributions (Restored: only populated if data exists, no placeholder) -->
+                <div id="project-modal-contributions-section" class="space-y-2.5">
+                    <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-stone-400 block" data-i18n="proj.modal_contributions_title">
+                        My Contributions
+                    </span>
+                    <div id="project-modal-contributions" class="p-3.5 rounded-2xl bg-[#FAFAF7] border border-[#E6ECF1] space-y-1.5"></div>
+                </div>
+
+                <!-- 6. Tech Stack & Tools -->
+                <div class="space-y-2.5">
+                    <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-stone-400 block" data-i18n="proj.modal_tech_title">
+                        Tech Stack
+                    </span>
+                    <div id="project-modal-tech" class="flex flex-wrap gap-1.5"></div>
+                </div>
+
+            </div>
+
+            <!-- 3. Sticky Footer with PREV and NEXT Navigation -->
+            <div class="px-5 py-3.5 border-t border-[#E6ECF1] bg-[#FAFAF7] flex items-center justify-between gap-3 shrink-0">
+                <button type="button" id="project-modal-prev-btn" onclick="navigateProjectModal(-1)" class="px-4 py-2 rounded-full border border-[#E6ECF1] bg-white text-[#233B53] font-mono font-bold text-xs hover:bg-[#DCEAF7] transition-all flex items-center gap-1.5 shadow-2xs disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer">
+                    <span>←</span>
+                    <span data-i18n="proj.modal_prev">PREV</span>
+                </button>
+
+                <div class="text-[11px] font-mono font-bold text-stone-400">
+                    <span id="project-modal-current-idx">1</span> / <span id="project-modal-total-count">10</span>
+                </div>
+
+                <button type="button" id="project-modal-next-btn" onclick="navigateProjectModal(1)" class="px-4 py-2 rounded-full border border-[#E6ECF1] bg-white text-[#233B53] font-mono font-bold text-xs hover:bg-[#DCEAF7] transition-all flex items-center gap-1.5 shadow-2xs disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer">
+                    <span data-i18n="proj.modal_next">NEXT</span>
+                    <span>→</span>
+                </button>
+            </div>
+
         </div>
     </div>
 

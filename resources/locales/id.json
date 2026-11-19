@@ -1,0 +1,264 @@
+{
+  "nav": {
+    "education": "Pendidikan",
+    "experience": "Pengalaman",
+    "projects": "Proyek",
+    "certifications": "Sertifikasi",
+    "skills": "Keahlian",
+    "contact": "Kontak",
+    "get_in_touch": "Hubungi Saya"
+  },
+  "hero": {
+    "badge": "Lulusan Baru · Full-Stack Developer · UI/UX Designer · Pengujian Manual",
+    "greeting": "Halo, saya",
+    "bio": "Lulusan Teknologi Rekayasa Perangkat Lunak dari IPB University dengan fokus pada Pengembangan Web Full-Stack, Desain UI/UX, dan Pengujian Perangkat Lunak Manual. Berpengalaman dalam mengembangkan aplikasi web responsif, menganalisis kebutuhan sistem, merancang antarmuka yang mudah digunakan, serta melakukan pengujian fungsional dan usability untuk memastikan kualitas perangkat lunak.",
+    "cta": "Hubungi Saya",
+    "location": "Bogor / Depok / Jakarta",
+    "open_to_work": "Terbuka untuk Bekerja"
+  },
+  "edu": {
+    "title_main": "Pendidikan",
+    "title_sub": "Akademik",
+    "subtitle": "Latar Belakang Pendidikan",
+    "period": "Agu 2022 – Agu 2026",
+    "institution": "IPB University",
+    "degree": "Sarjana Terapan Teknologi Rekayasa Perangkat Lunak",
+    "location": "Bogor, Indonesia",
+    "achievement_title": "Pencapaian Akademik",
+    "gpa_label": "IPK Kumulatif",
+    "scope_title": "Cakupan Akademik & Rekayasa",
+    "scope_focus": "Bidang Fokus",
+    "scope_focus_title": "Fokus Utama:",
+    "scope_focus_desc": "Pengembangan Web Full-Stack, Desain UI/UX, Pengujian Perangkat Lunak, serta Analisis dan Perancangan Sistem.",
+    "scope_sdlc_title": "Pengalaman SDLC:",
+    "scope_sdlc_desc": "Menerapkan metodologi Software Development Life Cycle (SDLC) dalam berbagai proyek pengembangan perangkat lunak bersama tim.",
+    "scope_capstone_title": "Tugas Akhir:",
+    "scope_capstone_desc": "Pengembangan dan Evaluasi Modul Pendidikan dan Pelatihan pada Website Internal Pemerintah Kota Depok.",
+    "scope_cert_title": "Sertifikasi Profesional:",
+    "scope_cert_desc": "Bersertifikasi sebagai Software Engineer oleh BNSP (Badan Nasional Sertifikasi Profesi)."
+  },
+  "org": {
+    "title_main": "Pengalaman",
+    "title_sub": "Organisasi",
+    "subtitle": "Berpartisipasi aktif dalam kegiatan dan kepanitiaan kampus",
+    "badge_committee": "Kepanitiaan & Acara",
+    "badge_scope": "Acara Tahunan Kampus",
+    "role": "Staf Desain Komunikasi Visual (DKV)",
+    "institution": "OMVI 2023 • IPB University",
+    "team_badge": "Tim DKV",
+    "bullet_1": "Membuat desain konten promosi Instagram untuk feed dan story.",
+    "bullet_2": "Mendesain atribut kegiatan, termasuk jersey, lanyard, dan kartu identitas panitia.",
+    "bullet_3": "Merancang dan memasang dekorasi panggung untuk kegiatan.",
+    "deliverables_label": "Hasil Karya:",
+    "deliv_merch": "Desain Merchandise",
+    "deliv_stage": "Dekorasi & Penataan Panggung",
+    "deliv_collab": "Kolaborasi Tim"
+  },
+  "exp": {
+    "title_main": "Pengalaman",
+    "title_sub": "Kerja",
+    "prev_aria": "Geser ke Kiri",
+    "next_aria": "Geser ke Kanan",
+    "0": {
+      "role": "Asisten Dosen Teknologi Multimedia",
+      "company": "IPB University",
+      "location": "Bogor, Indonesia",
+      "specialization": "Teknologi Multimedia",
+      "point_0": "Membimbing 38 mahasiswa dalam 14 pertemuan praktikum yang berfokus pada desain kemasan makanan dan mockup 3D menggunakan Canva, Figma, dan Pacdora.",
+      "point_1": "Membantu dosen pengampu dalam memantau perkembangan tugas mahasiswa, memberikan bimbingan dan konsultasi, mengevaluasi hasil desain kemasan, serta melakukan penilaian tugas.",
+      "skill_0": "Desain UI/UX",
+      "skill_1": "Canva",
+      "skill_2": "Figma",
+      "skill_3": "Pacdora",
+      "skill_4": "Mentoring"
+    },
+    "1": {
+      "role": "Full-Stack Developer Magang",
+      "company": "Pemerintah Kota Depok",
+      "location": "Depok, Indonesia",
+      "specialization": "Pengembangan Web & Analisis Sistem",
+      "point_0": "Mengembangkan Modul Pendidikan dan Pelatihan dengan 8 fitur utama untuk mendukung pengelolaan diklat pegawai.",
+      "point_1": "Menganalisis kebutuhan sistem, merancang diagram UML, dan membuat prototipe antarmuka low-fidelity.",
+      "point_2": "Melakukan 41 test case Black Box Testing dengan tingkat keberhasilan 100% serta mengevaluasi usability modul melalui pengujian SUS bersama pihak terkait dari instansi dengan skor 89,34.",
+      "skill_0": "Laravel",
+      "skill_1": "PHP",
+      "skill_2": "MySQL",
+      "skill_3": "Figma",
+      "skill_4": "Analisis Sistem",
+      "skill_5": "Black Box Testing",
+      "skill_6": "Usability Testing"
+    },
+    "2": {
+      "role": "Full-Stack Developer Magang",
+      "company": "Pemerintah Kota Depok",
+      "location": "Depok",
+      "specialization": "",
+      "point_0": "Mengembangkan Modul Standar Kompetensi Jabatan (SKJ) dengan 5 fitur utama untuk mendukung pengelolaan kompetensi ASN.",
+      "point_1": "Menganalisis kebutuhan sistem, merancang diagram UML, dan membuat prototipe antarmuka.",
+      "point_2": "Melakukan 4 test case Black Box Testing dengan tingkat keberhasilan 100%.",
+      "skill_0": "Laravel",
+      "skill_1": "PHP",
+      "skill_2": "MySQL",
+      "skill_3": "Figma",
+      "skill_4": "Analisis Sistem",
+      "skill_5": "Black Box Testing"
+    },
+    "3": {
+      "role": "Operator Produksi",
+      "company": "PT. Sansyu Precision Indonesia",
+      "location": "Cikarang",
+      "specialization": "",
+      "point_0": "Mengemas produk sesuai ketentuan jumlah dan berat yang ditetapkan.",
+      "point_1": "Memeriksa kesesuaian nama, kode, dan label produk untuk memastikan ketepatan informasi.",
+      "point_2": "Memeriksa jumlah kemasan dalam setiap boks serta kesesuaian label sebelum pengiriman.",
+      "skill_0": "Pengemasan Produk",
+      "skill_1": "Pemeriksaan Kualitas",
+      "skill_2": "Ketelitian",
+      "skill_3": "Kepatuhan SOP"
+    }
+  },
+  "proj": {
+    "title_main": "Proyek",
+    "title_sub": "Pilihan",
+    "view": "Lihat Proyek",
+    "internal": "Proyek Internal",
+    "preview": "Pratinjau Proyek",
+    "view_details": "Lihat Detail",
+    "modal_close": "Tutup modal proyek",
+    "modal_assets_title": "Aset & Repositori Proyek",
+    "modal_overview_title": "Ringkasan Proyek",
+    "modal_contributions_title": "Kontribusi Saya",
+    "modal_contributions_empty": "Rincian kontribusi segera hadir.",
+    "modal_tech_title": "Teknologi & Alat",
+    "modal_prev": "PREV",
+    "modal_next": "NEXT",
+    "modal_view_figma": "Lihat Desain Figma",
+    "modal_view_github": "Lihat Repositori GitHub",
+    "modal_view_demo": "File Proyek",
+    "modal_view_docs": "Dokumentasi",
+    "modal_view_doc": "Document",
+    "modal_view_srs": "Dokumen SRS",
+    "modal_view_link": "Buka Tautan Proyek",
+    "0": {
+      "title": "Modul Pendidikan dan Pelatihan",
+      "desc": "Mengembangkan Modul Pendidikan dan Pelatihan (Diklat) untuk Pemerintah Kota Depok guna mendukung perencanaan pelatihan ASN, manajemen dokumen, dan pemantauan riwayat diklat."
+    },
+    "1": {
+      "title": "Modul Standar Kompetensi Jabatan (SKJ)",
+      "desc": "Mengembangkan fitur pengelolaan data Standar Kompetensi Jabatan untuk menyediakan informasi persyaratan kompetensi jabatan ASN di lingkungan Pemerintah Kota Depok."
+    },
+    "2": {
+      "title": "AR Cerita Rakyat Timun Mas",
+      "desc": "Mengembangkan aplikasi mobile augmented reality yang menghidupkan kisah cerita rakyat Timun Mas. Pengguna dapat memindai kartu penanda untuk menampilkan adegan 3D interaktif yang mengikuti alur cerita.",
+      "contribution_0": "Merancang antarmuka aplikasi dan prototipe interaktif menggunakan Figma.",
+      "contribution_1": "Mengembangkan aplikasi mobile berbasis marker-based AR untuk menampilkan objek dan animasi 3D dari cerita rakyat Timun Mas.",
+      "contribution_2": "Membuat dan mengintegrasikan 3 marker gambar untuk menampilkan animasi 3D dalam aplikasi."
+    },
+    "3": {
+      "title": "E-Commerce Susu Bahagia",
+      "desc": "Mendesain antarmuka situs belanja daring untuk Susu Bahagia, mencakup tata letak halaman belanja pelanggan serta dashboard admin untuk pengelolaan pesanan dan produk.",
+      "contribution_0": "Merancang antarmuka pengguna untuk sistem manajemen stok dan pemesanan berbasis web Susu Bahagia.",
+      "contribution_1": "Melakukan Black Box Testing terhadap 84 test case untuk memverifikasi fungsionalitas sistem, validasi input, dan kesesuaian hasil pengujian."
+    },
+    "4": {
+      "title": "Pengenalan Bahasa Isyarat Arab",
+      "desc": "Mengembangkan model machine learning berbasis MobileNetV2 untuk mengenali gestur tangan bahasa isyarat Arab, membantu pengguna belajar huruf Hijaiyah melalui deteksi gerakan.",
+      "contribution_0": "Melakukan preprocessing dan augmentasi dataset gambar bahasa isyarat Arab untuk meningkatkan kualitas dan variasi data.",
+      "contribution_1": "Melatih model pengenalan bahasa isyarat Arab menggunakan MobileNetV2.",
+      "contribution_2": "Mencapai akurasi validasi sekitar 86% dalam proses pelatihan dan evaluasi model."
+    },
+    "5": {
+      "title": "Website Barcode Gelang Connection",
+      "desc": "Mengembangkan website gelang kustom yang terintegrasi dengan QR code, memungkinkan pengguna memindai kode pada gelang untuk mengakses halaman digital pribadi berisi foto dan playlist musik.",
+      "contribution_0": "Mengembangkan website personalisasi gelang menggunakan HTML dan CSS, menampilkan foto dan playlist musik yang dapat diakses melalui QR code.",
+      "contribution_1": "Menerapkan desain responsif untuk perangkat desktop dan mobile.",
+      "contribution_2": "Melakukan deployment website ke platform hosting agar dapat diakses secara online."
+    },
+    "6": {
+      "title": "Shawarma Station",
+      "desc": "Merancang antarmuka sistem pencatatan pesanan berbasis web untuk Shawarma Station guna mendukung pencatatan pesanan, pengiriman nota digital melalui WhatsApp, dan laporan penjualan harian.",
+      "contribution_0": "Merancang antarmuka sistem pencatatan pesanan Shawarma Station menggunakan Figma.",
+      "contribution_1": "Membuat wireframe dan desain antarmuka untuk halaman pengguna dan admin.",
+      "contribution_2": "Mendesain antarmuka yang mudah digunakan untuk mendukung pengelolaan produk, pencatatan pesanan, dan alur transaksi."
+    },
+    "7": {
+      "title": "Aplikasi Edukasi Pandu",
+      "desc": "Membuat model 3D menggunakan Blender untuk aplikasi augmented reality Pandu yang dirancang membantu pengguna belajar nilai-nilai Pancasila melalui objek visual 3D interaktif.",
+      "contribution_0": "Membuat objek 3D yang merepresentasikan lima sila Pancasila menggunakan Blender.",
+      "contribution_1": "Mengintegrasikan model 3D ke dalam Unity untuk mendukung pengalaman Augmented Reality (AR) berbasis marker.",
+      "contribution_2": "Mengembangkan visualisasi 3D untuk membantu pengguna memahami Pancasila melalui pembelajaran interaktif."
+    },
+    "8": {
+      "title": "Restoran Verdant",
+      "desc": "Mendesain antarmuka web pemesanan makanan berbasis kode QR untuk Verdant Cafe, memudahkan pelanggan melihat menu dan memesan hidangan secara digital dari meja mereka.",
+      "contribution_0": "Merancang antarmuka sistem pemesanan berbasis web Verdant Coffee & Eatery menggunakan Figma.",
+      "contribution_1": "Membuat desain antarmuka halaman pelanggan, meliputi menu makanan, ulasan, dan informasi restoran.",
+      "contribution_2": "Merancang antarmuka admin untuk pengelolaan pesanan, menu, dan laporan penjualan."
+    },
+    "9": {
+      "title": "FastPlanner",
+      "desc": "Mendesain antarmuka aplikasi web dan mobile FastPlanner untuk membantu pengguna mengatur jadwal dan rutinitas intermittent fasting (IF) secara teratur.",
+      "contribution_0": "Merancang antarmuka aplikasi FastPlanner berbasis web dan mobile menggunakan Figma dan Canva.",
+      "contribution_1": "Membuat desain antarmuka yang mencakup 5 fitur utama untuk mendukung pengelolaan intermittent fasting.",
+      "contribution_2": "Merancang antarmuka untuk tiga peran pengguna, yaitu pengguna, admin, dan mitra.",
+      "contribution_3": "Mengembangkan prototipe UI interaktif untuk memvisualisasikan navigasi dan menjaga konsistensi pengalaman pengguna pada platform web dan mobile."
+    }
+  },
+  "cert": {
+    "title_main": "Lisensi &",
+    "title_sub": "Pencapaian",
+    "subtitle": "Kredensial nasional dan pencapaian akademik",
+    "view": "Lihat ↗",
+    "modal_open": "Buka Berkas Asli",
+    "modal_open_pdf": "Buka PDF",
+    "modal_open_image": "Buka Gambar",
+    "verified": "Terverifikasi"
+  },
+  "skills": {
+    "title_main": "Alat &",
+    "title_sub": "Teknologi",
+    "subtitle": "Teknologi dan perangkat yang saya gunakan",
+    "cat_0": {
+      "title": "Pengembangan Web",
+      "desc": "Membangun aplikasi web responsif dan mengelola basis data relasional."
+    },
+    "cat_1": {
+      "title": "Desain & Kreatif",
+      "desc": "Merancang antarmuka pengguna, kerangka kawat (wireframe), dan aset visual kreatif."
+    },
+    "cat_2": {
+      "title": "Pengembangan & Alat AI",
+      "desc": "Perangkat untuk pemrograman, kontrol versi, dan rekayasa berbasis AI."
+    },
+    "soft_title": "Keterampilan Interpersonal",
+    "soft_collab": "Kolaborasi Tim",
+    "soft_comm": "Komunikasi Efektif",
+    "soft_adapt": "Kemampuan Adaptasi",
+    "soft_prob": "Pemecahan Masalah",
+    "soft_time": "Manajemen Waktu & Proyek",
+    "soft_crit": "Berpikir Kritis",
+    "soft_detail": "Ketelitian & Presisi"
+  },
+  "contact": {
+    "title_main": "Mari Terhubung &",
+    "title_sub": "berkolaborasi bersama.",
+    "subtitle": "Respon cepat melalui Email & WhatsApp",
+    "linkedin_tag": "Jejaring Profesional",
+    "linkedin_action": "Terhubung di LinkedIn",
+    "insta_tag": "Media Sosial & Visual",
+    "insta_action": "Ikuti di Instagram",
+    "wa_tag": "Pesan Langsung",
+    "wa_action": "Kirim Pesan WhatsApp",
+    "email_tag": "Kontak Resmi",
+    "email_action": "Kirimkan Email",
+    "copy_email": "Salin Email",
+    "email_copied": "Tersalin!",
+    "location_title": "Lokasi & Ketersediaan",
+    "location_value": "Bogor / Depok / Jakarta, Indonesia",
+    "availability_status": "Tersedia untuk Full-Time / Proyek"
+  },
+  "footer": {
+    "rights": "Hak cipta dilindungi undang-undang.",
+    "built_with": "Dibangun dengan"
+  }
+}

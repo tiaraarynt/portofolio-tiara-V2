@@ -1,27 +1,21 @@
-import { translations } from './translations.js';
+import i18next from 'i18next';
+import enTranslations from '../locales/en.json';
+import idTranslations from '../locales/id.json';
 
-// Bilingual (EN / ID) Language Switcher
+// Bilingual (EN / ID) Language Switcher using i18next
 const I18N_STORAGE_KEY = 'tiara_portfolio_lang';
 let currentLanguage = 'en';
 
-export function setLanguage(lang) {
-    if (!translations[lang]) return;
-    currentLanguage = lang;
-    try {
-        localStorage.setItem(I18N_STORAGE_KEY, lang);
-    } catch (e) {
-        // localStorage might be unavailable in private browsing
-    }
-
+export function updateDOMTranslations() {
     // Set <html lang="...">
-    document.documentElement.lang = lang;
+    document.documentElement.lang = currentLanguage;
 
     // Update text content for elements with data-i18n
     const elements = document.querySelectorAll('[data-i18n]');
     elements.forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (translations[lang] && translations[lang][key] !== undefined) {
-            el.textContent = translations[lang][key];
+        if (key && i18next.exists(key)) {
+            el.textContent = i18next.t(key);
         }
     });
 
@@ -31,8 +25,8 @@ export function setLanguage(lang) {
         const spec = el.getAttribute('data-i18n-attr');
         if (!spec) return;
         const [attrName, key] = spec.split(':');
-        if (attrName && key && translations[lang] && translations[lang][key] !== undefined) {
-            el.setAttribute(attrName, translations[lang][key]);
+        if (attrName && key && i18next.exists(key)) {
+            el.setAttribute(attrName, i18next.t(key));
         }
     });
 
@@ -40,7 +34,7 @@ export function setLanguage(lang) {
     const allLangButtons = document.querySelectorAll('[data-lang-btn]');
     allLangButtons.forEach(btn => {
         const btnLang = btn.getAttribute('data-lang-btn');
-        const isActive = btnLang === lang;
+        const isActive = btnLang === currentLanguage;
         btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
         if (isActive) {
             btn.className = 'lang-btn px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full transition-all duration-200 cursor-pointer bg-[#233B53] text-white shadow-2xs font-bold';
@@ -50,13 +44,53 @@ export function setLanguage(lang) {
     });
 }
 
-function initLanguageSwitcher() {
+export function setLanguage(lang) {
+    if (lang !== 'en' && lang !== 'id') return;
+    currentLanguage = lang;
+    try {
+        localStorage.setItem(I18N_STORAGE_KEY, lang);
+    } catch (e) {
+        // localStorage might be unavailable in private browsing
+    }
+
+    i18next.changeLanguage(lang, (err) => {
+        if (err) {
+            console.error('Error changing i18next language:', err);
+            return;
+        }
+        updateDOMTranslations();
+        // If project modal is currently open, re-render with new language
+        const projModal = document.getElementById('project-modal');
+        if (projModal && !projModal.classList.contains('pointer-events-none') && typeof renderProjectModalContent === 'function') {
+            renderProjectModalContent();
+        }
+    });
+}
+
+async function initLanguageSwitcher() {
     let savedLang = 'en';
     try {
         savedLang = localStorage.getItem(I18N_STORAGE_KEY) || 'en';
     } catch (e) {
         savedLang = 'en';
     }
+    if (savedLang !== 'en' && savedLang !== 'id') {
+        savedLang = 'en';
+    }
+    currentLanguage = savedLang;
+
+    await i18next.init({
+        lng: savedLang,
+        fallbackLng: 'en',
+        debug: false,
+        resources: {
+            en: { translation: enTranslations },
+            id: { translation: idTranslations }
+        },
+        interpolation: {
+            escapeValue: false
+        }
+    });
 
     // Attach click listeners to all language switcher buttons (desktop & mobile)
     document.addEventListener('click', (e) => {
@@ -70,8 +104,8 @@ function initLanguageSwitcher() {
         }
     });
 
-    // Apply initial language
-    setLanguage(savedLang);
+    // Apply initial translations
+    updateDOMTranslations();
 }
 
 // Initialize Project Carousel — Infinite Loop with DOM Cloning
@@ -85,17 +119,22 @@ function initProjectCarousel() {
 
     const CLONE_COUNT = 2;
 
-    // Prepend clones of last N real cards, append clones of first N real cards
-    for (let i = CLONE_COUNT - 1; i >= 0; i--) {
-        const cloneFront = realCards[total - 1 - i].cloneNode(true);
+    // Prepend clones of last N real cards in correct sequence [total-2, total-1]
+    // Append clones of first N real cards in correct sequence [0, 1]
+    for (let i = 0; i < CLONE_COUNT; i++) {
+        const cloneFront = realCards[total - CLONE_COUNT + i].cloneNode(true);
         cloneFront.classList.add('proj-clone');
-        cloneFront.removeAttribute('data-project-index');
-        container.insertBefore(cloneFront, container.firstChild);
+        cloneFront.setAttribute('data-project-index', String(total - CLONE_COUNT + i));
+        const frontBtn = cloneFront.querySelector('[data-project-open-btn]');
+        if (frontBtn) frontBtn.setAttribute('data-project-open-btn', String(total - CLONE_COUNT + i));
+        container.insertBefore(cloneFront, realCards[0]);
     }
     for (let i = 0; i < CLONE_COUNT; i++) {
         const cloneBack = realCards[i].cloneNode(true);
         cloneBack.classList.add('proj-clone');
-        cloneBack.removeAttribute('data-project-index');
+        cloneBack.setAttribute('data-project-index', String(i));
+        const backBtn = cloneBack.querySelector('[data-project-open-btn]');
+        if (backBtn) backBtn.setAttribute('data-project-open-btn', String(i));
         container.appendChild(cloneBack);
     }
 
@@ -172,7 +211,7 @@ function initProjectCarousel() {
     }, { passive: true });
 
     // Nav arrow buttons (called from Blade onclick)
-    window.scrollProjectsByStep = function(step) {
+    window.scrollProjectsByStep = function (step) {
         currentIndex += step;
         // Wrap around if out of bounds (allCards.length includes clones)
         if (currentIndex < 0) currentIndex = CLONE_COUNT + total - 1;
@@ -189,13 +228,39 @@ function initProjectCarousel() {
         });
     });
 
-    // Click on side (inactive) card to bring it center
+    // Click on card or arrow button:
+    // - If dragged recently: ignore click to prevent conflict with dragging/swiping
+    // - If arrow button clicked: open popup directly for this project
+    // - If inactive card clicked: bring it to center
+    // - If active card clicked: open project detail popup modal
     allCards.forEach((card, i) => {
         card.addEventListener('click', (e) => {
-            if (!card.classList.contains('is-active') && !e.target.closest('a')) {
+            // Ignore click if user was dragging/swiping the carousel
+            if (isCarouselDragging) return;
+
+            const realIndex = ((i - CLONE_COUNT) % total + total) % total;
+
+            // Direct click on the arrow button inside card
+            const openBtn = e.target.closest('[data-project-open-btn]');
+            if (openBtn) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (window.openProjectModal) {
+                    window.openProjectModal(realIndex);
+                }
+                return;
+            }
+
+            // Click anywhere else on the card
+            if (!card.classList.contains('is-active')) {
                 currentIndex = i;
                 centerCard(currentIndex, true);
                 setTimeout(handleLoopJump, 450);
+            } else {
+                // Card is already centered & active: open popup!
+                if (window.openProjectModal) {
+                    window.openProjectModal(realIndex);
+                }
             }
         });
     });
@@ -205,6 +270,9 @@ function initProjectCarousel() {
 
     window.addEventListener('resize', () => centerCard(currentIndex, false));
 }
+
+// Flag to prevent click conflicts during drag/swipe
+let isCarouselDragging = false;
 
 // Drag and Touch to scroll horizontally for Netflix-style carousels
 function initDragToScroll() {
@@ -219,10 +287,12 @@ function initDragToScroll() {
         let isDown = false;
         let startX;
         let scrollLeft;
+        let hasMoved = false;
 
         // Mouse Drag Events
         slider.addEventListener('mousedown', (e) => {
             isDown = true;
+            hasMoved = false;
             slider.classList.add('active');
             startX = e.pageX - slider.offsetLeft;
             scrollLeft = slider.scrollLeft;
@@ -231,17 +301,29 @@ function initDragToScroll() {
         slider.addEventListener('mouseleave', () => {
             isDown = false;
             slider.classList.remove('active');
+            setTimeout(() => { isCarouselDragging = false; }, 80);
         });
 
         slider.addEventListener('mouseup', () => {
             isDown = false;
             slider.classList.remove('active');
+            if (hasMoved) {
+                isCarouselDragging = true;
+                setTimeout(() => { isCarouselDragging = false; }, 120);
+            } else {
+                isCarouselDragging = false;
+            }
         });
 
         slider.addEventListener('mousemove', (e) => {
             if (!isDown) return;
-            e.preventDefault();
             const x = e.pageX - slider.offsetLeft;
+            const dist = Math.abs(x - startX);
+            if (dist > 5) {
+                hasMoved = true;
+                isCarouselDragging = true;
+            }
+            e.preventDefault();
             const walk = (x - startX) * 1.6;
             slider.scrollLeft = scrollLeft - walk;
         });
@@ -249,17 +331,32 @@ function initDragToScroll() {
         // Touch Swipe Events for mobile / touch devices
         let touchStartX = 0;
         let touchScrollLeft = 0;
+        let touchMoved = false;
 
         slider.addEventListener('touchstart', (e) => {
+            touchMoved = false;
             touchStartX = e.touches[0].pageX - slider.offsetLeft;
             touchScrollLeft = slider.scrollLeft;
         }, { passive: true });
 
         slider.addEventListener('touchmove', (e) => {
             const touchX = e.touches[0].pageX - slider.offsetLeft;
+            if (Math.abs(touchX - touchStartX) > 8) {
+                touchMoved = true;
+                isCarouselDragging = true;
+            }
             const walk = (touchX - touchStartX) * 1.2;
             slider.scrollLeft = touchScrollLeft - walk;
         }, { passive: true });
+
+        slider.addEventListener('touchend', () => {
+            if (touchMoved) {
+                isCarouselDragging = true;
+                setTimeout(() => { isCarouselDragging = false; }, 120);
+            } else {
+                isCarouselDragging = false;
+            }
+        });
     });
 }
 
@@ -350,7 +447,7 @@ function initParallaxGradients() {
 }
 
 // Copy to Clipboard with Toast Notification
-window.copyToClipboard = function(text, label = 'Text') {
+window.copyToClipboard = function (text, label = 'Text') {
     const successMsg = `✨ ${text} copied to clipboard!`;
 
     navigator.clipboard.writeText(text).then(() => {
@@ -367,11 +464,10 @@ function showToast(message, type = 'success') {
     if (!container) return;
 
     const toast = document.createElement('div');
-    toast.className = `flex items-center gap-3 px-4 py-3 rounded-2xl shadow-xl transition-all duration-300 transform translate-y-4 opacity-0 text-sm font-medium border backdrop-blur-md ${
-        type === 'success' 
-            ? 'bg-stone-900/90 text-stone-100 border-[#233B53]/50' 
-            : 'bg-rose-900/90 text-rose-100 border-rose-700/50'
-    }`;
+    toast.className = `flex items-center gap-3 px-4 py-3 rounded-2xl shadow-xl transition-all duration-300 transform translate-y-4 opacity-0 text-sm font-medium border backdrop-blur-md ${type === 'success'
+        ? 'bg-stone-900/90 text-stone-100 border-[#233B53]/50'
+        : 'bg-rose-900/90 text-rose-100 border-rose-700/50'
+        }`;
     toast.innerHTML = `
         <span class="inline-block w-2 h-2 rounded-full bg-[#233B53] animate-pulse"></span>
         <span>${message}</span>
@@ -521,14 +617,18 @@ function initBackToTop() {
 }
 
 // Certificate Preview Modal
-window.openCertificateModal = function(imageSrc, fileSrc, isPdf, title, issuer, badge) {
+let savedCertScrollPosition = 0;
+
+window.openCertificateModal = function (imageSrc, fileSrc, isPdf, title, issuer, badge) {
     const modal = document.getElementById('cert-modal');
     const modalCard = document.getElementById('cert-modal-card');
+    const modalBody = document.getElementById('cert-modal-body');
     const modalImg = document.getElementById('cert-modal-img');
     const modalTitle = document.getElementById('cert-modal-title');
     const modalIssuer = document.getElementById('cert-modal-issuer');
     const modalBadge = document.getElementById('cert-modal-badge');
     const modalDownload = document.getElementById('cert-modal-download');
+    const modalDownloadText = document.getElementById('cert-modal-download-text');
 
     if (!modal) return;
 
@@ -544,8 +644,26 @@ window.openCertificateModal = function(imageSrc, fileSrc, isPdf, title, issuer, 
     }
     if (modalDownload) {
         modalDownload.href = fileSrc || imageSrc;
-        modalDownload.textContent = isPdf ? 'Open PDF' : 'Open Image';
     }
+    if (modalDownloadText) {
+        const key = isPdf ? 'cert.modal_open_pdf' : 'cert.modal_open_image';
+        const fallback = isPdf ? 'Open PDF' : 'Open Image';
+        modalDownloadText.textContent = (typeof i18next !== 'undefined' && i18next.exists(key)) ? i18next.t(key) : fallback;
+    }
+
+    // Reset internal scroll of modal body
+    if (modalBody) {
+        modalBody.scrollTop = 0;
+    }
+
+    // Lock background scroll completely and prevent scroll chaining
+    savedCertScrollPosition = window.pageYOffset || document.documentElement.scrollTop || 0;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${savedCertScrollPosition}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
+    document.body.style.overflow = 'hidden';
 
     modal.classList.remove('opacity-0', 'pointer-events-none');
     modal.classList.add('opacity-100', 'pointer-events-auto');
@@ -553,10 +671,9 @@ window.openCertificateModal = function(imageSrc, fileSrc, isPdf, title, issuer, 
         modalCard.classList.remove('scale-95');
         modalCard.classList.add('scale-100');
     }
-    document.body.classList.add('overflow-hidden');
 };
 
-window.closeCertificateModal = function() {
+window.closeCertificateModal = function () {
     const modal = document.getElementById('cert-modal');
     const modalCard = document.getElementById('cert-modal-card');
 
@@ -568,11 +685,447 @@ window.closeCertificateModal = function() {
         modalCard.classList.remove('scale-100');
         modalCard.classList.add('scale-95');
     }
-    document.body.classList.remove('overflow-hidden');
+
+    // Instantly restore background scroll position without auto-scroll or animation
+    const targetScroll = savedCertScrollPosition;
+    const htmlEl = document.documentElement;
+    const originalScrollBehavior = htmlEl.style.scrollBehavior;
+    htmlEl.style.scrollBehavior = 'auto';
+
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
+    document.body.style.overflow = '';
+
+    window.scrollTo({
+        top: targetScroll,
+        left: 0,
+        behavior: 'instant'
+    });
+
+    htmlEl.style.scrollBehavior = originalScrollBehavior;
 };
 
+// ==========================================
+// Project Detail Popup Modal
+// ==========================================
+let projectsList = [];
+let activeProjectIndex = 0;
+let activeProjectImgIndex = 0;
+let savedScrollPosition = 0;
+
+function parseProjectsData() {
+    if (projectsList.length) return projectsList;
+    const scriptEl = document.getElementById('portfolio-projects-data');
+    if (scriptEl && scriptEl.textContent) {
+        try {
+            projectsList = JSON.parse(scriptEl.textContent);
+        } catch (e) {
+            console.error('Failed to parse portfolio projects data:', e);
+            projectsList = [];
+        }
+    }
+    return projectsList;
+}
+
+window.openProjectModal = function (index) {
+    parseProjectsData();
+    if (!projectsList.length) return;
+
+    const modal = document.getElementById('project-modal');
+    const modalCard = document.getElementById('project-modal-card');
+    if (!modal) return;
+
+    // Bounds check
+    const idx = parseInt(index, 10);
+    if (isNaN(idx) || idx < 0 || idx >= projectsList.length) return;
+
+    activeProjectIndex = idx;
+    activeProjectImgIndex = 0;
+
+    renderProjectModalContent();
+
+    // Reset popup scroll body to top
+    const modalBody = document.getElementById('project-modal-body');
+    if (modalBody) {
+        modalBody.scrollTop = 0;
+    }
+
+    // Save background scroll position and lock body completely (desktop & mobile)
+    savedScrollPosition = window.pageYOffset || document.documentElement.scrollTop || 0;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${savedScrollPosition}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
+    document.body.style.overflow = 'hidden';
+
+    modal.classList.remove('opacity-0', 'pointer-events-none');
+    modal.classList.add('opacity-100', 'pointer-events-auto');
+    if (modalCard) {
+        modalCard.classList.remove('scale-95');
+        modalCard.classList.add('scale-100');
+    }
+};
+
+window.closeProjectModal = function () {
+    const modal = document.getElementById('project-modal');
+    const modalCard = document.getElementById('project-modal-card');
+    if (!modal) return;
+
+    modal.classList.remove('opacity-100', 'pointer-events-auto');
+    modal.classList.add('opacity-0', 'pointer-events-none');
+    if (modalCard) {
+        modalCard.classList.remove('scale-100');
+        modalCard.classList.add('scale-95');
+    }
+
+    // Instantly restore background scroll position without auto-scroll or animation
+    const targetScroll = savedScrollPosition;
+    const htmlEl = document.documentElement;
+    const originalScrollBehavior = htmlEl.style.scrollBehavior;
+    htmlEl.style.scrollBehavior = 'auto';
+
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
+    document.body.style.overflow = '';
+
+    window.scrollTo({
+        top: targetScroll,
+        left: 0,
+        behavior: 'instant'
+    });
+
+    htmlEl.style.scrollBehavior = originalScrollBehavior;
+};
+
+window.navigateProjectModal = function (step) {
+    parseProjectsData();
+    const newIdx = activeProjectIndex + step;
+    if (newIdx < 0 || newIdx >= projectsList.length) return;
+
+    activeProjectIndex = newIdx;
+    activeProjectImgIndex = 0;
+    renderProjectModalContent();
+
+    // Reset popup body scroll to the top when switching projects
+    const modalBody = document.getElementById('project-modal-body');
+    if (modalBody) {
+        modalBody.scrollTop = 0;
+    }
+};
+
+function renderProjectModalContent() {
+    const project = projectsList[activeProjectIndex];
+    if (!project) return;
+
+    // Localized translations from i18next if available
+    const translatedTitle = i18next.exists(`proj.${activeProjectIndex}.title`)
+        ? i18next.t(`proj.${activeProjectIndex}.title`)
+        : project.title;
+
+    const translatedDesc = i18next.exists(`proj.${activeProjectIndex}.desc`)
+        ? i18next.t(`proj.${activeProjectIndex}.desc`)
+        : project.description;
+
+    // Elements
+    const titleEl = document.getElementById('project-modal-title');
+    const categoryEl = document.getElementById('project-modal-category');
+    const methodologyEl = document.getElementById('project-modal-methodology');
+    const overviewEl = document.getElementById('project-modal-overview');
+    const imgEl = document.getElementById('project-modal-image');
+    const imgFallback = document.getElementById('project-modal-image-fallback');
+    const imgControls = document.getElementById('project-modal-img-controls');
+    const imgCounter = document.getElementById('project-modal-img-counter');
+    const assetsSec = document.getElementById('project-modal-assets-section');
+    const linksEl = document.getElementById('project-modal-links');
+    const techEl = document.getElementById('project-modal-tech');
+    const prevBtn = document.getElementById('project-modal-prev-btn');
+    const nextBtn = document.getElementById('project-modal-next-btn');
+    const currIdxEl = document.getElementById('project-modal-current-idx');
+    const totalCountEl = document.getElementById('project-modal-total-count');
+
+    // 1. Project Image
+    const images = project.images && project.images.length ? project.images : (project.image ? [project.image] : []);
+    if (images.length > 0) {
+        if (activeProjectImgIndex >= images.length) activeProjectImgIndex = 0;
+        imgEl.src = images[activeProjectImgIndex];
+        imgEl.alt = translatedTitle;
+        if (project.image_position) {
+            imgEl.style.objectPosition = project.image_position;
+        } else {
+            imgEl.style.objectPosition = 'center top';
+        }
+        imgEl.classList.remove('hidden');
+        if (imgFallback) imgFallback.classList.add('hidden');
+
+        // Multi-image navigation
+        if (images.length > 1) {
+            if (imgControls) imgControls.classList.remove('hidden');
+            if (imgCounter) imgCounter.textContent = `${activeProjectImgIndex + 1} / ${images.length}`;
+
+            const prevImgBtn = document.getElementById('project-modal-img-prev');
+            const nextImgBtn = document.getElementById('project-modal-img-next');
+            if (prevImgBtn) {
+                prevImgBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    activeProjectImgIndex = (activeProjectImgIndex - 1 + images.length) % images.length;
+                    renderProjectModalContent();
+                };
+            }
+            if (nextImgBtn) {
+                nextImgBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    activeProjectImgIndex = (activeProjectImgIndex + 1) % images.length;
+                    renderProjectModalContent();
+                };
+            }
+        } else {
+            if (imgControls) imgControls.classList.add('hidden');
+        }
+    } else {
+        imgEl.classList.add('hidden');
+        if (imgControls) imgControls.classList.add('hidden');
+        if (imgFallback) imgFallback.classList.remove('hidden');
+    }
+
+    // Header Category Badge
+    if (categoryEl) categoryEl.textContent = project.category || 'Project';
+
+    // 2. Project Assets & Repositories Links
+    const rawUrl = (project.url || '').trim();
+    const docUrl = (project.documentation_url || '').trim();
+    const projectDocUrl = (project.document_url || '').trim();
+    const srsUrl = (project.srs_url || '').trim();
+    const isUrlInvalid = !rawUrl || ['#', 'internal', 'none'].includes(rawUrl.toLowerCase()) || rawUrl.toLowerCase().includes('not publicly available');
+    const isDocInvalid = !docUrl || ['#', 'none'].includes(docUrl.toLowerCase());
+    const isProjectDocInvalid = !projectDocUrl || ['#', 'none'].includes(projectDocUrl.toLowerCase());
+    const isSrsInvalid = !srsUrl || ['#', 'none'].includes(srsUrl.toLowerCase());
+
+    if (isUrlInvalid && isDocInvalid && isProjectDocInvalid && isSrsInvalid) {
+        if (assetsSec) assetsSec.classList.add('hidden');
+        if (linksEl) linksEl.innerHTML = '';
+    } else {
+        if (assetsSec) assetsSec.classList.remove('hidden');
+        if (linksEl) {
+            let linksHtml = '';
+            const iconSvg = `<svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>`;
+
+            if (!isUrlInvalid) {
+                let label = i18next.t('proj.modal_view_link') || 'Open Project Link';
+                if (rawUrl.includes('figma.com')) {
+                    label = i18next.t('proj.modal_view_figma') || 'View Figma Design';
+                } else if (rawUrl.includes('github.com')) {
+                    label = i18next.t('proj.modal_view_github') || 'View GitHub Repository';
+                } else if (rawUrl.includes('drive.google.com')) {
+                    label = i18next.t('proj.modal_view_demo') || 'Project Files';
+                }
+
+                linksHtml += `
+                    <a href="${rawUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#DCEAF7] text-[#233B53] hover:bg-[#233B53] hover:text-white border border-[#E6ECF1] transition-all shadow-2xs group">
+                        <span>${label}</span>
+                        <span class="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">${iconSvg}</span>
+                    </a>
+                `;
+            }
+
+            if (!isDocInvalid) {
+                const docLabel = i18next.t('proj.modal_view_docs') || 'Documentation';
+                const docIconSvg = `<svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>`;
+
+                linksHtml += `
+                    <a href="${docUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#FAFAF7] text-[#233B53] hover:bg-[#233B53] hover:text-white border border-[#E6ECF1] transition-all shadow-2xs group">
+                        <span>${docLabel}</span>
+                        <span class="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">${docIconSvg}</span>
+                    </a>
+                `;
+            }
+
+            if (!isProjectDocInvalid) {
+                const docLabel = i18next.t('proj.modal_view_doc') || 'Document';
+                const docIconSvg = `<svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>`;
+
+                linksHtml += `
+                    <a href="${projectDocUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#FAFAF7] text-[#233B53] hover:bg-[#233B53] hover:text-white border border-[#E6ECF1] transition-all shadow-2xs group">
+                        <span>${docLabel}</span>
+                        <span class="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">${docIconSvg}</span>
+                    </a>
+                `;
+            }
+
+            if (!isSrsInvalid) {
+                const srsLabel = i18next.t('proj.modal_view_srs') || 'SRS Document';
+                const srsIconSvg = `<svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>`;
+
+                linksHtml += `
+                    <a href="${srsUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#FAFAF7] text-[#233B53] hover:bg-[#233B53] hover:text-white border border-[#E6ECF1] transition-all shadow-2xs group">
+                        <span>${srsLabel}</span>
+                        <span class="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">${srsIconSvg}</span>
+                    </a>
+                `;
+            }
+
+            linksEl.innerHTML = linksHtml;
+        }
+    }
+
+    // 3. Project Title
+    if (titleEl) titleEl.textContent = translatedTitle;
+
+    // 2. Project Period (below title in subtle, compact style)
+    const periodWrapper = document.getElementById('project-modal-period-wrapper');
+    const periodEl = document.getElementById('project-modal-period');
+    if (project.period) {
+        if (periodEl) periodEl.textContent = project.period;
+        if (periodWrapper) periodWrapper.classList.remove('hidden');
+    } else {
+        if (periodWrapper) periodWrapper.classList.add('hidden');
+    }
+
+    // 4. Project Overview
+    if (overviewEl) overviewEl.textContent = translatedDesc;
+
+    // 5. My Contributions (Synchronized with Work Experience data for Diklat & SKJ, or project.contributions)
+    const contributionsSec = document.getElementById('project-modal-contributions-section');
+    const contributionsEl = document.getElementById('project-modal-contributions');
+
+    // Resolve contribution points dynamically
+    let contributionPoints = [];
+    if (project.id === 'education-training-module' || activeProjectIndex === 0) {
+        // Diklat (Jan–May 2026): Reuse descriptions from Work Experience index 1
+        const p0 = i18next.exists('exp.1.point_0') ? i18next.t('exp.1.point_0') : null;
+        const p1 = i18next.exists('exp.1.point_1') ? i18next.t('exp.1.point_1') : null;
+        const p2 = i18next.exists('exp.1.point_2') ? i18next.t('exp.1.point_2') : null;
+        contributionPoints = [p0, p1, p2].filter(Boolean);
+    } else if (project.id === 'skj-module' || activeProjectIndex === 1) {
+        // SKJ (Aug–Dec 2025): Reuse descriptions from Work Experience index 2
+        const p0 = i18next.exists('exp.2.point_0') ? i18next.t('exp.2.point_0') : null;
+        const p1 = i18next.exists('exp.2.point_1') ? i18next.t('exp.2.point_1') : null;
+        const p2 = i18next.exists('exp.2.point_2') ? i18next.t('exp.2.point_2') : null;
+        contributionPoints = [p0, p1, p2].filter(Boolean);
+    } else if (project.id === 'timun-mas-folktale-ar' || activeProjectIndex === 2) {
+        // Timun Mas AR: localized contributions from i18n
+        const p0 = i18next.exists('proj.2.contribution_0') ? i18next.t('proj.2.contribution_0') : null;
+        const p1 = i18next.exists('proj.2.contribution_1') ? i18next.t('proj.2.contribution_1') : null;
+        const p2 = i18next.exists('proj.2.contribution_2') ? i18next.t('proj.2.contribution_2') : null;
+        contributionPoints = [p0, p1, p2].filter(Boolean);
+        if (contributionPoints.length === 0 && project.contributions) {
+            contributionPoints = project.contributions;
+        }
+    } else if (project.id === 'susu-bahagia-ecommerce' || activeProjectIndex === 3) {
+        // Susu Bahagia: localized contributions from i18n
+        const p0 = i18next.exists('proj.3.contribution_0') ? i18next.t('proj.3.contribution_0') : null;
+        const p1 = i18next.exists('proj.3.contribution_1') ? i18next.t('proj.3.contribution_1') : null;
+        contributionPoints = [p0, p1].filter(Boolean);
+        if (contributionPoints.length === 0 && project.contributions) {
+            contributionPoints = project.contributions;
+        }
+    } else if (project.id === 'arabic-sign-language-recognition' || activeProjectIndex === 4) {
+        // Arabic Hand Language: localized contributions from i18n
+        const p0 = i18next.exists('proj.4.contribution_0') ? i18next.t('proj.4.contribution_0') : null;
+        const p1 = i18next.exists('proj.4.contribution_1') ? i18next.t('proj.4.contribution_1') : null;
+        const p2 = i18next.exists('proj.4.contribution_2') ? i18next.t('proj.4.contribution_2') : null;
+        contributionPoints = [p0, p1, p2].filter(Boolean);
+        if (contributionPoints.length === 0 && project.contributions) {
+            contributionPoints = project.contributions;
+        }
+    } else if (project.id === 'connection-bracelet-barcode' || activeProjectIndex === 5) {
+        // Connection Bracelet: localized contributions from i18n
+        const p0 = i18next.exists('proj.5.contribution_0') ? i18next.t('proj.5.contribution_0') : null;
+        const p1 = i18next.exists('proj.5.contribution_1') ? i18next.t('proj.5.contribution_1') : null;
+        const p2 = i18next.exists('proj.5.contribution_2') ? i18next.t('proj.5.contribution_2') : null;
+        contributionPoints = [p0, p1, p2].filter(Boolean);
+        if (contributionPoints.length === 0 && project.contributions) {
+            contributionPoints = project.contributions;
+        }
+    } else if (project.id === 'shawarma-station' || activeProjectIndex === 6) {
+        // Shawarma Station: localized contributions from i18n
+        const p0 = i18next.exists('proj.6.contribution_0') ? i18next.t('proj.6.contribution_0') : null;
+        const p1 = i18next.exists('proj.6.contribution_1') ? i18next.t('proj.6.contribution_1') : null;
+        const p2 = i18next.exists('proj.6.contribution_2') ? i18next.t('proj.6.contribution_2') : null;
+        contributionPoints = [p0, p1, p2].filter(Boolean);
+        if (contributionPoints.length === 0 && project.contributions) {
+            contributionPoints = project.contributions;
+        }
+    } else if (project.id === 'pandu-application' || activeProjectIndex === 7) {
+        // Pandu: localized contributions from i18n
+        const p0 = i18next.exists('proj.7.contribution_0') ? i18next.t('proj.7.contribution_0') : null;
+        const p1 = i18next.exists('proj.7.contribution_1') ? i18next.t('proj.7.contribution_1') : null;
+        const p2 = i18next.exists('proj.7.contribution_2') ? i18next.t('proj.7.contribution_2') : null;
+        contributionPoints = [p0, p1, p2].filter(Boolean);
+        if (contributionPoints.length === 0 && project.contributions) {
+            contributionPoints = project.contributions;
+        }
+    } else if (project.id === 'verdant-restaurant' || activeProjectIndex === 8) {
+        // Verdant: localized contributions from i18n
+        const p0 = i18next.exists('proj.8.contribution_0') ? i18next.t('proj.8.contribution_0') : null;
+        const p1 = i18next.exists('proj.8.contribution_1') ? i18next.t('proj.8.contribution_1') : null;
+        const p2 = i18next.exists('proj.8.contribution_2') ? i18next.t('proj.8.contribution_2') : null;
+        contributionPoints = [p0, p1, p2].filter(Boolean);
+        if (contributionPoints.length === 0 && project.contributions) {
+            contributionPoints = project.contributions;
+        }
+    } else if (project.id === 'fastplanner' || activeProjectIndex === 9) {
+        // FastPlanner: localized contributions from i18n
+        const p0 = i18next.exists('proj.9.contribution_0') ? i18next.t('proj.9.contribution_0') : null;
+        const p1 = i18next.exists('proj.9.contribution_1') ? i18next.t('proj.9.contribution_1') : null;
+        const p2 = i18next.exists('proj.9.contribution_2') ? i18next.t('proj.9.contribution_2') : null;
+        const p3 = i18next.exists('proj.9.contribution_3') ? i18next.t('proj.9.contribution_3') : null;
+        contributionPoints = [p0, p1, p2, p3].filter(Boolean);
+        if (contributionPoints.length === 0 && project.contributions) {
+            contributionPoints = project.contributions;
+        }
+    } else if (project.contributions && Array.isArray(project.contributions) && project.contributions.length > 0) {
+        contributionPoints = project.contributions;
+    }
+
+    if (contributionPoints.length > 0) {
+        if (contributionsSec) contributionsSec.classList.remove('hidden');
+        if (contributionsEl) {
+            contributionsEl.innerHTML = contributionPoints.map(item => `
+                <div class="flex items-start gap-2 text-xs text-stone-600 leading-relaxed">
+                    <span class="text-[#233B53] font-bold mt-0.5 shrink-0">✦</span>
+                    <span>${item}</span>
+                </div>
+            `).join('');
+        }
+    } else {
+        if (contributionsSec) contributionsSec.classList.add('hidden');
+        if (contributionsEl) contributionsEl.innerHTML = '';
+    }
+
+    // 6. Tech Stack Tags
+    if (techEl) {
+        const techs = project.technology || [];
+        techEl.innerHTML = techs.map(t => `
+            <span class="px-2.5 py-1 rounded-lg text-[10.5px] font-bold font-mono bg-[#FAFAF7] text-[#1C2430] border border-[#E6ECF1] shadow-2xs">
+                ${t}
+            </span>
+        `).join('');
+    }
+
+    // 3. Sticky Footer Navigation States: Hide PREV on first, hide NEXT on last, keep layout centered
+    if (prevBtn) {
+        prevBtn.disabled = activeProjectIndex === 0;
+        prevBtn.classList.toggle('invisible', activeProjectIndex === 0);
+        prevBtn.classList.toggle('pointer-events-none', activeProjectIndex === 0);
+    }
+    if (nextBtn) {
+        nextBtn.disabled = activeProjectIndex === (projectsList.length - 1);
+        nextBtn.classList.toggle('invisible', activeProjectIndex === (projectsList.length - 1));
+        nextBtn.classList.toggle('pointer-events-none', activeProjectIndex === (projectsList.length - 1));
+    }
+    if (currIdxEl) currIdxEl.textContent = activeProjectIndex + 1;
+    if (totalCountEl) totalCountEl.textContent = projectsList.length;
+}
+
 // Global button carousel scroller helper
-window.scrollCarousel = function(containerId, offset) {
+window.scrollCarousel = function (containerId, offset) {
     const container = document.getElementById(containerId);
     if (container) {
         container.scrollBy({ left: offset, behavior: 'smooth' });
@@ -601,7 +1154,7 @@ function initScrollReveal() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-revealed');
-                
+
                 // Animate child cards with a refined stagger effect
                 const cards = entry.target.querySelectorAll('.clean-card, .project-card-item');
                 cards.forEach((card, index) => {
@@ -656,9 +1209,8 @@ function initCopyEmail() {
             }
 
             // Visual Success State
-            const currentLang = document.documentElement.lang || 'en';
-            const copiedText = (translations[currentLang] && translations[currentLang]['contact.email_copied']) || 'Copied!';
-            
+            const copiedText = i18next.t('contact.email_copied') || 'Copied!';
+
             if (textSpan) {
                 textSpan.textContent = copiedText;
             }
@@ -673,8 +1225,7 @@ function initCopyEmail() {
 
             if (resetTimer) clearTimeout(resetTimer);
             resetTimer = setTimeout(() => {
-                const revertLang = document.documentElement.lang || 'en';
-                const originalText = (translations[revertLang] && translations[revertLang]['contact.copy_email']) || 'Copy Email';
+                const originalText = i18next.t('contact.copy_email') || 'Copy Email';
                 if (textSpan) {
                     textSpan.textContent = originalText;
                 }
@@ -754,16 +1305,31 @@ document.addEventListener('DOMContentLoaded', () => {
     initActiveNavbarSpy();
 
     // Close certificate modal on backdrop click or Escape key
-    const modal = document.getElementById('cert-modal');
-    const backdrop = document.getElementById('cert-modal-backdrop');
-    if (backdrop) {
-        backdrop.addEventListener('click', () => {
+    const certModal = document.getElementById('cert-modal');
+    const certBackdrop = document.getElementById('cert-modal-backdrop');
+    if (certBackdrop) {
+        certBackdrop.addEventListener('click', () => {
             window.closeCertificateModal();
         });
     }
+
+    // Close project modal on backdrop click or Escape key
+    const projModal = document.getElementById('project-modal');
+    const projBackdrop = document.getElementById('project-modal-backdrop');
+    if (projBackdrop) {
+        projBackdrop.addEventListener('click', () => {
+            window.closeProjectModal();
+        });
+    }
+
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal && !modal.classList.contains('pointer-events-none')) {
-            window.closeCertificateModal();
+        if (e.key === 'Escape') {
+            if (certModal && !certModal.classList.contains('pointer-events-none')) {
+                window.closeCertificateModal();
+            }
+            if (projModal && !projModal.classList.contains('pointer-events-none')) {
+                window.closeProjectModal();
+            }
         }
     });
 });
